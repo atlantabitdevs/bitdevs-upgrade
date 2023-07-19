@@ -52,6 +52,7 @@ export async function summarizeWebpage() {
 
 const run = async () => { 
   const links = await getLinks('./_posts/2023-06-28-socratic-seminar-125.md')
+  console.log(links)
 
 };
 run()
