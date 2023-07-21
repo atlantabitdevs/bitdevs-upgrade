@@ -19,7 +19,6 @@ const loadFromRepo = async () => {
     { branch: "main", recursive: false, unknown: "warn", ignorePaths: ["*.md"] }
   );
   const docs = await loader.load();
-  console.log({ docs });
 };
 
 type Link = {
@@ -34,13 +33,14 @@ type Link = {
  * Ingest a markdown file and extract each link.
  */
 const getLinks = async (markdownPath: string): Promise<Link[]> => {
-  const linksRegex = /\[([^\[]+)\](\(.*\))/gm;
-  const singleMatchRegex = /\[([^\[]+)\]\((.*)\)/;
+  const regexMdLinks = /\[([^\[]+)\](\(.*\))/gm // gets all markdown links 
+  const singleMatch = /\[([^\[]+)\]\((.*)\)/ // gets the url
   const file = await readFileSync(markdownPath, "utf-8");
-  const matches = file.match(linksRegex) ?? [];
+  const matches = file.match(regexMdLinks) ?? [];
   const links = []
   for (let i = 0; i < matches.length; i++) {
-    const match = singleMatchRegex.exec(matches[i])
+    const match = singleMatch.exec(matches[i])
+    // const match = matches[i];
     if (!match) continue;
     links.push({
       full: match[0],
@@ -64,7 +64,8 @@ async function summarizeLinks(links: Link[]): Promise<Link[]> {
 }
 
 export async function summarizeWebpage(link: string) { 
-  const model = new OpenAI({ temperature: 0, maxTokens: 3000  });
+  if (!link) return;
+  const model = new OpenAI({ temperature: 0, maxTokens: 2000  });
   const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 4000 });
 
   const loader = new CheerioWebBaseLoader(link);
@@ -74,7 +75,6 @@ export async function summarizeWebpage(link: string) {
   const combineDocsChain = await loadSummarizationChain(model, { type: "map_reduce" });
   try {
     const summary = await combineDocsChain.call({input_documents: docs}) 
-    console.log(summary);
     return summary;
   } catch (e) {
     // @ts-ignore 
@@ -103,8 +103,8 @@ const run = async () => {
   const fileName = '2023-06-28-socratic-seminar-125.md';
   const pathPrefix = './_posts/';
   const links = await getLinks(pathPrefix + fileName);
-  const summaries = await summarizeLinks(links.slice(0, 10));
+  const summaries = await summarizeLinks(links);
+  console.log('# of summaries', summaries);
   const result = await writeSummariesToFile('2023-06-28-socratic-seminar-125.md', summaries);
-  // const summaries = await summarizeWebpage(links[2].link);
 };
 run()
