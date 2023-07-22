@@ -2,7 +2,7 @@ import { OpenAI } from "langchain/llms/openai";
 import { loadSummarizationChain, AnalyzeDocumentChain } from "langchain/chains";
 import { RecursiveCharacterTextSplitter } from "langchain/text_splitter";
 import { GithubRepoLoader } from "langchain/document_loaders/web/github";
-import { readFileSync, writeFile, writeFileSync } from "fs";
+import { readFileSync, writeFile, writeFileSync, appendFile } from "fs";
 import { CheerioWebBaseLoader } from "langchain/document_loaders/web/cheerio";
 
 /*
@@ -51,22 +51,27 @@ const getLinks = async (markdownPath: string): Promise<Link[]> => {
   return links;
 }
 async function summarizeLinks(links: Link[]): Promise<Link[]> {
-  const result = [];
+  const promises = [];
   for (let i = 0; i < links.length; i++) {
     const link = links[i];
-    const summary = await summarizeWebpage(link.link).catch(e => console.error(e));
-    if (!summary) continue;
-    console.log(summary);
-    result.push({...link, summary: summary.text});
+    // const summary = await summarizeWebpage(link.link).catch(e => console.error(e));
+    const promise = summarizeWebpage(link.link).then(res => { return {...link, summary: res?.text} }).catch(e => console.error(e));
+    // if (!summary) continue;
+    promises.push(promise);
   }
-  return result
-
+  console.log('promise', promises);
+  const settled = await Promise.allSettled(promises);
+  console.log('settled', settled);
+  // @ts-ignore
+  const results = settled.filter(p => p.status === 'fulfilled').map(p => p.value);
+  console.log('results', results)
+  return results
 }
 
 export async function summarizeWebpage(link: string) { 
   if (!link) return;
   const model = new OpenAI({ temperature: 0, maxTokens: 2000  });
-  const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 4000 });
+  const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 500 });
 
   const loader = new CheerioWebBaseLoader(link);
   
@@ -74,7 +79,7 @@ export async function summarizeWebpage(link: string) {
   console.log('docs length', docs.length);
   const combineDocsChain = await loadSummarizationChain(model, { type: "map_reduce" });
   try {
-    const summary = await combineDocsChain.call({input_documents: docs}) 
+    const summary = await combineDocsChain.call({ input_documents: docs }) 
     return summary;
   } catch (e) {
     // @ts-ignore 
@@ -103,7 +108,7 @@ const run = async () => {
   const fileName = '2023-06-28-socratic-seminar-125.md';
   const pathPrefix = './_posts/';
   const links = await getLinks(pathPrefix + fileName);
-  const summaries = await summarizeLinks(links);
+  const summaries = await summarizeLinks(links.splice(5,15));
   console.log('# of summaries', summaries);
   const result = await writeSummariesToFile('2023-06-28-socratic-seminar-125.md', summaries);
 };
