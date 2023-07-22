@@ -25,13 +25,11 @@ export function getSortedPostsData() {
     }
   })
   // Sort posts by date
-  allPostsData.sort((a, b) => {
+  return allPostsData.sort((a, b) => {
     if (a.date < b.date) {
       return 1
     } else {
       return -1
     }
   })
-  console.log('allPostsData: ')
-  return allPostsData
 }
