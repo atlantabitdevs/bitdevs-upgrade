@@ -1,14 +1,7 @@
 import Link from 'next/link'
 import { getSortedPostsData } from '../utils/posts'
 
-// interface Post {
-//   id: string;
-//   date: string;
-//   title: string;
-// }
-
 const allPostsData = getSortedPostsData()
-console.log('app/page.tsx > allPostsData: ', allPostsData)
 
 export default function Home() {
   return (
@@ -29,12 +22,3 @@ export default function Home() {
     </main>
   )
 }
-
-// export async function getStaticProps() {
-//   const allPostsData = getSortedPostsData()
-//   return {
-//     props: {
-//       allPostsData,
-//     },
-//   }
-// }
