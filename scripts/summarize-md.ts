@@ -97,7 +97,7 @@ const writeSummariesToFile = async (filename: string, summaries: Link[]) => {
   for (let i = 0; i < summaries.length; i++) {
     //  * [Title](link)
     //     * Summary
-    const lineToWrite = '* [' + summaries[i].title + '](' + summaries[i].link + ')\n    * ' + summaries[i].summary + '\n\n';
+    const lineToWrite = '* [' + summaries[i].title + '](' + summaries[i].link + ')\n    * ' + summaries[i].summary + '\n';
     result.push(lineToWrite);
   }
   writeFileSync(fullPath, result.join(''))
