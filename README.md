@@ -1,3 +1,16 @@
+# bitdevs-upgrade
+
+This is a project to improve the UX of BitDevs websites and add AI generated summaries to help new attendees.
+
+## AI Scraper
+
+Work by Nitesh on the AI scraper portion: https://github.com/niteshbalusu11/bitdevs-ai-scraper/tree/main
+
+## Frontend Template
+
+The frontend is a NextJS website. See below for NextJS details.
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
