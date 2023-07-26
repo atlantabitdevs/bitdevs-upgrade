@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - main
-    # paths:
-    # - 'posts/new-event*.md'
+    paths:
+      - 'posts/new-event*.md'
 
 jobs:
   build:
@@ -38,7 +38,7 @@ jobs:
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GH_TOKEN }}
           title: 'Add new summary'
           commit-message: Add summary
           body: 'This pull request adds a new summary.'
