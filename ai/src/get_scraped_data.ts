@@ -10,7 +10,7 @@ type Link = {
   link: string;
 };
 
-export const summarize = async ({}) => {
+const getScrapedData = async ({}) => {
   const eventsDir = path.join(__dirname, '../', '../', 'posts');
 
   const files = readdirSync(eventsDir);
@@ -35,18 +35,15 @@ export const summarize = async ({}) => {
 
   const eventPath = path.join(eventsDir, mostRecentEvent);
 
-  console.log(eventPath);
-  console.log(mostRecentEvent);
-
-  const summaryPath = path.join(__dirname, '../', '../' , 'summaries', mostRecentEvent.replace('new-event', 'summary')).replace('.md', '.json');
-
-  console.log(summaryPath);
+  const summaryPath = path
+    .join(__dirname, '../', '../', 'summaries', mostRecentEvent.replace('new-event', 'summary'))
+    .replace('.md', '.json');
 
   const links = await getLinks({
     path: eventPath,
   });
 
-  const results = (await map(links, scrapeFiles)).filter(n => n.text !== '' || n.title !== '');
+  const results = (await map(links, scrapeFiles)).filter(n => !!n.text && !!n.title);
 
   return { results, summaryPath };
 };
@@ -56,3 +53,5 @@ const scrapeFiles = async (link: Link) => {
 
   return { text, title: link.title };
 };
+
+export default getScrapedData;

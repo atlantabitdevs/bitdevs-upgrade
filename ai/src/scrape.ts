@@ -31,6 +31,7 @@ const scrape = async ({ url }: Args): Promise<Return> => {
         return text;
       })
       .get()
+      .filter(n => !!n)
       .filter(text => text.length > 50 && text.length < 500) // Filters out too short or too long paragraphs
       .join('\n');
 
@@ -43,7 +44,12 @@ const scrape = async ({ url }: Args): Promise<Return> => {
         return text;
       })
       .get()
+      .filter(n => !!n)
       .join('\n');
+
+    if (!paragraphs && !preTags) {
+      return { title, text: '' };
+    }
 
     const scrapedText = [paragraphs, preTags].join('\n\n');
 

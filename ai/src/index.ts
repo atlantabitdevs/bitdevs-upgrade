@@ -4,16 +4,18 @@ import { Configuration, OpenAIApi } from 'openai';
 import { ScrapedDataResults, SummaryResults } from './types';
 import { auto, mapLimit } from 'async';
 
-import { summarize } from './summerize';
+import getScrapedData from './get_scraped_data';
 import writeSummary from './write_summary';
 
 dotenv.config();
+
+const model = 'gpt-3.5-turbo-16k';
 
 type Tasks = {
   initAi: {
     openai: OpenAIApi;
   };
-  getSummary: {
+  getScrapedData: {
     results: ScrapedDataResults[];
     summaryPath: string;
   };
@@ -33,10 +35,10 @@ const main = async () => {
         return { openai };
       },
 
-      getSummary: [
+      getScrapedData: [
         'initAi',
         async ({ initAi }) => {
-          const { results, summaryPath } = await summarize({});
+          const { results, summaryPath } = await getScrapedData({});
 
           // try {
           //   const aiResults = await Promise.all([
@@ -64,32 +66,42 @@ const main = async () => {
           //   console.log(err.response.data);
           // }
 
-          // await writeSummary({ path: summaryPath, data: results });
+          // const newResults = results.map(n => {
+          //   return {
+          //     title: n.title,
+          //     summary: n.text,
+          //     summaryeli15: '',
+          //   };
+          // });
+
+          // await writeSummary({ path: summaryPath, data: newResults });
 
           return { results, summaryPath };
         },
       ],
 
       summarize: [
-        'getSummary',
+        'getScrapedData',
         'initAi',
-        async ({ getSummary, initAi }) => {
+        async ({ getScrapedData, initAi }) => {
           const aiResults = async (summary: ScrapedDataResults) => {
             try {
               const aiCompletion = await Promise.all([
                 initAi.openai.createChatCompletion({
-                  model: 'gpt-3.5-turbo',
-                  messages: [{ role: 'user', content: `Can you explaint his for me? \n ${summary.text}` }],
+                  model,
+                  messages: [
+                    { role: 'user', content: `Can you explaint this in great detail for me? \n ${summary.text}` },
+                  ],
                 }),
                 initAi.openai.createChatCompletion({
-                  model: 'gpt-3.5-turbo',
-                  messages: [{ role: 'user', content: `Can you explain this like I am 15? ${summary.text} ` }],
+                  model,
+                  messages: [
+                    { role: 'user', content: `Can you explain this in great detail like I am 15? ${summary.text} ` },
+                  ],
                 }),
               ]);
-
               const chatCompletion = aiCompletion[0].data.choices[0].message?.content || 'No summary generated';
               const chatCompletionEli15 = aiCompletion[1].data.choices[0].message?.content || 'No summary generated';
-
               return {
                 summary: chatCompletion,
                 summaryeli15: chatCompletionEli15,
@@ -100,12 +112,10 @@ const main = async () => {
               console.log(err.response.data);
             }
           };
-
-          const results = (await mapLimit(getSummary.results, 10, aiResults)).filter(
+          const results = (await mapLimit(getScrapedData.results, 3, aiResults)).filter(
             (result): result is SummaryResults => result !== undefined
           );
-
-          await writeSummary({ path: getSummary.summaryPath, data: results });
+          await writeSummary({ path: getScrapedData.summaryPath, data: results });
         },
       ],
     });
