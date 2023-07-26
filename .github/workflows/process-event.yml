@@ -22,14 +22,11 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Switch to the ai folder
-        run: cd ai
-
       - name: Install dependencies
-        run: yarn install --network-timeout 1000000
+        run: cd ai && yarn install --network-timeout 1000000
 
       - name: Build and Process new event
-        run: yarn start
+        run: cd ai && yarn start
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
