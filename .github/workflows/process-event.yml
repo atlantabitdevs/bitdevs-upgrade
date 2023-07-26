@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - ai
-    paths:
-      - 'posts/new-event*.md'
+    # paths:
+    # - 'posts/new-event*.md'
 
 jobs:
   build:
