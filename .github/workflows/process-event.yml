@@ -3,7 +3,7 @@ name: Process New Event
 on:
   push:
     branches:
-      - ai
+      - main
     # paths:
     # - 'posts/new-event*.md'
 
