@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { getSortedPostsData } from '../utils/posts'
 import MeetupName from '@/components/MeetupName'
+import { BitcoinCircleIcon } from '@bitcoin-design/bitcoin-icons-react/outline'
+
 
 const allPostsData = getSortedPostsData()
 
@@ -13,7 +15,7 @@ export default function Home({}) {
       <ul>
         {allPostsData.map(({ id, date, title }) => (
           <li className="post" key={id}>
-            {title}
+            <BitcoinCircleIcon className="w-12 h-12" /> {title}
             <br />
             {id}
             <br />
