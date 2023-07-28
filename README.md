@@ -6,6 +6,10 @@ This is a project to improve the UX of BitDevs websites and add AI generated sum
 
 Work by Nitesh on the AI scraper portion: https://github.com/niteshbalusu11/bitdevs-ai-scraper/tree/main
 
+## Figma Design
+
+Follow design work here: https://www.figma.com/file/4bV8cJBpreCpWwJ55uk9Rb/BitDevs-Upgrade?type=design&node-id=7%3A10&mode=design&t=Wz7ivmd0ZRi69Vqx-1
+
 ## Frontend Template
 
 The frontend is a NextJS website. See below for NextJS details.
