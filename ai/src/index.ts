@@ -106,6 +106,7 @@ const main = async () => {
                 summary: chatCompletion,
                 summaryeli15: chatCompletionEli15,
                 title: summary.title,
+                link: summary.link,
               } as SummaryResults;
             } catch (err: any) {
               console.error(`Summarization failed for ${summary.title} \n`);

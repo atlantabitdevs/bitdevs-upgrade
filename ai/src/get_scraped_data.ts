@@ -1,3 +1,4 @@
+import { ScrapedDataResults } from './types';
 import getLinks from './get_links';
 import { map } from 'async';
 import path from 'path';
@@ -43,7 +44,7 @@ const getScrapedData = async ({}) => {
     path: eventPath,
   });
 
-  const results = (await map(links, scrapeFiles)).filter(n => !!n.text && !!n.title);
+  const results: ScrapedDataResults[] = (await map(links, scrapeFiles)).filter(n => !!n.text && !!n.title);
 
   return { results, summaryPath };
 };
@@ -51,7 +52,7 @@ const getScrapedData = async ({}) => {
 const scrapeFiles = async (link: Link) => {
   const { text } = await scrape({ url: link.link });
 
-  return { text, title: link.title };
+  return { text, title: link.title, link: link.link };
 };
 
 export default getScrapedData;
