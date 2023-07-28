@@ -37,44 +37,8 @@ const main = async () => {
 
       getScrapedData: [
         'initAi',
-        async ({ initAi }) => {
+        async ({}) => {
           const { results, summaryPath } = await getScrapedData({});
-
-          // try {
-          //   const aiResults = await Promise.all([
-          //     initAi.openai.createChatCompletion({
-          //       model: 'gpt-3.5-turbo',
-          //       messages: [{ role: 'user', content: `Can you explaint his for me? \n ${results[1].text}` }],
-          //     }),
-          //     initAi.openai.createChatCompletion({
-          //       model: 'gpt-3.5-turbo',
-          //       messages: [{ role: 'user', content: `Can you explain this like I am 15? ${results[1].text} ` }],
-          //     }),
-          //   ]);
-
-          //   const chatCompletion = aiResults[0];
-          //   const chatCompletionEli15 = aiResults[1];
-
-          //   console.log(chatCompletion.data.choices);
-          //   console.log(chatCompletionEli15.data.choices);
-
-          //   const text = chatCompletion.data.choices[0].message?.content || 'No summary generated';
-          //   const text2 = chatCompletion.data.choices[0].message?.content || 'No summary generated';
-          //   return { text, title: results[0].title };
-          // } catch (err: any) {
-          //   console.error(`Summarization failed for ${results[0].title} \n`);
-          //   console.log(err.response.data);
-          // }
-
-          // const newResults = results.map(n => {
-          //   return {
-          //     title: n.title,
-          //     summary: n.text,
-          //     summaryeli15: '',
-          //   };
-          // });
-
-          // await writeSummary({ path: summaryPath, data: newResults });
 
           return { results, summaryPath };
         },
@@ -100,8 +64,10 @@ const main = async () => {
                   ],
                 }),
               ]);
+
               const chatCompletion = aiCompletion[0].data.choices[0].message?.content || 'No summary generated';
               const chatCompletionEli15 = aiCompletion[1].data.choices[0].message?.content || 'No summary generated';
+
               return {
                 summary: chatCompletion,
                 summaryeli15: chatCompletionEli15,
