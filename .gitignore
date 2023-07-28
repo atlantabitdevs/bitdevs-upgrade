@@ -37,4 +37,4 @@ next-env.d.ts
 # ai directory
 ai/build
 ai/node_modules
-ai/.env
+.env
