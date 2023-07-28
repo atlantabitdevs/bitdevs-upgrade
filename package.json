@@ -19,6 +19,7 @@
     "gray-matter": "^4.0.3",
     "ignore": "^5.2.4",
     "langchain": "^0.0.112",
+    "marked": "^5.1.2",
     "next": "13.4.9",
     "postcss": "8.4.25",
     "react": "18.2.0",
