@@ -25,7 +25,7 @@ const page = async ({ params }: PageProps) => {
   // return <div>{JSON.stringify(post)}</div>
   return (
     <div>
-      <Mdx code={post.body.code} />
+      <Mdx slug={params.slug} code={post.body.code} />
     </div>
   )
 }
