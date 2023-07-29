@@ -36,16 +36,6 @@ export function Mdx({ code, slug }: MdxProps) {
       }
       return (
         <SummaryLink href={href} title={children} slug={slug} />
-        // <div>
-        //   <strong>SPECIAL SUMMARY LINK: </strong>
-        //   <a
-        //     className={cn("font-medium underline underline-offset-4", className)}
-        //     href={href}
-        //     {...props}
-        //   >
-        //     {children}
-        //   </a>
-        // </div>
       )
     },
     h1: ({ className, ...props }: { className?: any}) => (
