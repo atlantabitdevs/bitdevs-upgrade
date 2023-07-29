@@ -3,10 +3,12 @@ import path from 'path'
 import matter from 'gray-matter'
 
 const postsDirectory = path.join(process.cwd(), 'posts')
+const summariesDirectory = path.join(process.cwd(), 'summaries')
 
 export function getSortedPostsData() {
   // Get file names under /posts
   const fileNames = fs.readdirSync(postsDirectory)
+  const summaryFiles = fs.readdirSync(summariesDirectory)
   const allPostsData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, '')
@@ -17,14 +19,22 @@ export function getSortedPostsData() {
 
     // Use gray-matter to parse the post metadata section
     const matterResult = matter(fileContents)
+    summaryFiles.map((summaryFile) => {
+      const a = fileName.split('-').shift()
+      const b = summaryFile.split('-').shift()
+      if (fileName.includes(summaryFile)) {
+      }
+    })
 
     // Combine the data with the id
-    return {
+    const data = {
       id,
-      title: "Meetup Event",
-      date: "2009-01-03 00:00:00",
-      ...matterResult.data,      
+      title: 'Meetup Event',
+      date: '2009-01-03 00:00:00',
+      ...matterResult.data,
     }
+
+    return data
   })
   // Sort posts by date
   return allPostsData.sort((a, b) => {
