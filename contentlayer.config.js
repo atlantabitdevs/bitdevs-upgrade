@@ -70,7 +70,7 @@ const computedFields = {
         //       ariaLabel: "Link to section",
         //     },
         //   },
-        // ],
+        // ], // TODO: figure out why heading links conflcts with the special summary link component
       ],
     },
   })
