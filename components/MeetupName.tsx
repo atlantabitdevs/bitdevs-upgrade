@@ -7,7 +7,7 @@ const {
 export default function MeetupName() {
   return (
     <div className="flex flex-col space-y-1">
-      {position === 'right' ? <p>BitDevs {name}</p> : <p>{name} BitDevs</p>}
+      {position === 'right' ? <span>BitDevs <span>{name}</span></span> : <span>{name} BitDevs</span>}
     </div>
   )
 }

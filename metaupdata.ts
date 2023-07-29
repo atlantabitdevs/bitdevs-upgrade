@@ -29,6 +29,10 @@ export const metaupdata: Metaupdata = {
     {
       text: 'About',
       link: '/about'
+    },
+    {
+      text: 'Meetup',
+      link: 'https://www.meetup.com/BitDevsNYC/'
     }
   ],
 }
