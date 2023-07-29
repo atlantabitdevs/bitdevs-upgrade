@@ -17,8 +17,6 @@ interface MdxProps {
 export function Mdx({ code, slug, jsonData }: MdxProps) {
   const Component = useMDXComponent(code)
 
-  console.log('json data is ', jsonData)
-
   // TODO: Fix the liberal className?: explicit any usage
 
   const components = {
