@@ -12,41 +12,48 @@ type Link = {
 };
 
 const getScrapedData = async ({}) => {
-  const eventsDir = path.join(__dirname, '../', '../', 'posts');
+  try {
+    const eventsDir = path.join(__dirname, '../', '../', 'content', 'events');
 
-  const files = readdirSync(eventsDir);
+    const files = readdirSync(eventsDir);
 
-  const newEventFiles = files.filter(file => file.startsWith('new-event') && file.endsWith('.md'));
+    // Filter files that start with a date in the format yyyy-mm-dd
+    const dateRegex = /^\d{4}-\d{2}-\d{2}/;
+    const newEventFiles = files.filter(file => dateRegex.test(file) && file.endsWith('.md'));
 
-  if (!newEventFiles.length) {
-    throw new Error('No event files found');
+    if (!newEventFiles.length) {
+      throw new Error('No event files found');
+    }
+
+    // Sort the files based on the date in their filenames
+    newEventFiles.sort((a, b) => {
+      // Extract the dates from the filenames
+      const matchA = a.match(dateRegex);
+      const matchB = b.match(dateRegex);
+
+      const dateA = matchA ? matchA[0] : '';
+      const dateB = matchB ? matchB[0] : '';
+
+      // Compare the dates lexicographically
+      return dateB.localeCompare(dateA);
+    });
+
+    const mostRecentEvent = newEventFiles[0];
+
+    const eventPath = path.join(eventsDir, mostRecentEvent);
+
+    const summaryPath = path.join(__dirname, '../', '../', 'summaries', mostRecentEvent.replace('.md', '.json'));
+
+    const links = await getLinks({
+      path: eventPath,
+    });
+
+    const results: ScrapedDataResults[] = (await map(links, scrapeFiles)).filter(n => !!n.text && !!n.title);
+
+    return { results, summaryPath };
+  } catch (err) {
+    throw err;
   }
-
-  // Sort the files based on the date in their filenames
-  newEventFiles.sort((a, b) => {
-    // Extract the dates from the filenames
-    const dateA = a.slice('new-event-'.length);
-    const dateB = b.slice('new-event-'.length);
-
-    // Compare the dates lexicographically
-    return dateB.localeCompare(dateA);
-  });
-
-  const mostRecentEvent = newEventFiles[0];
-
-  const eventPath = path.join(eventsDir, mostRecentEvent);
-
-  const summaryPath = path
-    .join(__dirname, '../', '../', 'summaries', mostRecentEvent.replace('new-event', 'summary'))
-    .replace('.md', '.json');
-
-  const links = await getLinks({
-    path: eventPath,
-  });
-
-  const results: ScrapedDataResults[] = (await map(links, scrapeFiles)).filter(n => !!n.text && !!n.title);
-
-  return { results, summaryPath };
 };
 
 const scrapeFiles = async (link: Link) => {
