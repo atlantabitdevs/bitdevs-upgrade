@@ -1,14 +1,16 @@
-import Link from 'next/link'
 import {
   ContentType,
   getSortedMarkdownContent,
 } from '../../lib/parse-markdown-files'
+
+import Link from 'next/link'
 import MeetupName from '@/components/MeetupName'
 
 export default function Posts({ params }: { params: any }) {
-  console.log('params.contentType: ', params.contentType)
   const contentType = params.contentType
   const allContentData = getSortedMarkdownContent(contentType)
+
+  console.log(allContentData)
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <MeetupName />

@@ -1,20 +1,37 @@
+import getJsonFile, { ParsedData } from '@/lib/get-json'
+
 import { FC } from 'react'
-import { allDocs } from 'contentlayer/generated'
 import { Mdx } from '@/components/MDX-components'
+import { allDocs } from 'contentlayer/generated'
+
+const contentType = 'events'
 
 interface PageProps {
   params: {
     slug: string
+    contentType: string
   }
 }
 
-async function getDocFromParams(slug: string) {
-  const post = allDocs.find((post) => post.slugAsParams === slug)
-  return post
+type Args = {
+  slug: string
+  contentType: string
+}
+
+async function getDocFromParams(params: Args) {
+  let data: ParsedData | undefined
+  const post = allDocs.find((post) => post.slugAsParams === params.slug)
+
+  console.log(allDocs)
+  if (params.contentType === contentType) {
+    data = await getJsonFile({ fileName: params.slug })
+  }
+
+  return { post, data }
 }
 
 const page = async ({ params }: PageProps) => {
-  const post = await getDocFromParams(params.slug)
+  const { post, data } = await getDocFromParams(params)
 
   if (!post) {
     return <div>404 sorry you poor bitdev</div>
@@ -25,7 +42,11 @@ const page = async ({ params }: PageProps) => {
   // return <div>{JSON.stringify(post)}</div>
   return (
     <div>
-      <Mdx code={post.body.code} />
+      {params.contentType === contentType && data === undefined ? (
+        <div>{`No summary generated for ${params.slug}`}</div>
+      ) : null}
+
+      <Mdx code={post.body.code} slug={params.slug} jsonData={data} />
     </div>
   )
 }

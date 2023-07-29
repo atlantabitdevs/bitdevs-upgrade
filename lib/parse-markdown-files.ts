@@ -1,6 +1,6 @@
 import fs from 'fs'
-import path from 'path'
 import matter from 'gray-matter'
+import path from 'path'
 
 /*
  * This function gets a list of the posts/events from the markdown files.
@@ -19,9 +19,12 @@ export enum ContentType {
   Events = 'events',
 }
 export function getSortedMarkdownContent(contentType: ContentType) {
+  // console.log(contentType)
   const contentDirectory = path.join(process.cwd(), `/content/${contentType}`)
+
   // Get file names under /posts
   const fileNames = fs.readdirSync(contentDirectory)
+
   const allMarkdownData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, '')
@@ -42,7 +45,7 @@ export function getSortedMarkdownContent(contentType: ContentType) {
     }
   })
   // Sort posts by date
-  return allMarkdownData
+  const returnValue = allMarkdownData
     .filter((data) => data.id !== '.gitkeep')
     .sort((a, b) => {
       if (a.date < b.date) {
@@ -51,4 +54,6 @@ export function getSortedMarkdownContent(contentType: ContentType) {
         return -1
       }
     })
+
+  return returnValue
 }
