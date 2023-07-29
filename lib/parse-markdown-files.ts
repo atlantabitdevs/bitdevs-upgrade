@@ -22,7 +22,7 @@ export function getSortedMarkdownContent(contentType: ContentType) {
   const contentDirectory = path.join(process.cwd(), `/content/${contentType}`)
   // Get file names under /posts
   const fileNames = fs.readdirSync(contentDirectory)
-  const allPostsData = fileNames.map((fileName) => {
+  const allMarkdownData = fileNames.map((fileName) => {
     // Remove ".md" from file name to get id
     const id = fileName.replace(/\.md$/, '')
 
@@ -42,11 +42,13 @@ export function getSortedMarkdownContent(contentType: ContentType) {
     }
   })
   // Sort posts by date
-  return allPostsData.sort((a, b) => {
-    if (a.date < b.date) {
-      return 1
-    } else {
-      return -1
-    }
-  })
+  return allMarkdownData
+    .filter((data) => data.id !== '.gitkeep')
+    .sort((a, b) => {
+      if (a.date < b.date) {
+        return 1
+      } else {
+        return -1
+      }
+    })
 }
