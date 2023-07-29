@@ -1,4 +1,16 @@
 import Link from 'next/link'
+import { getSortedPostsData } from '../../utils/posts'
+import {allDocs} from "contentlayer/generated"
+
+
+const allPostsData = getSortedPostsData()
+
+// interface PageProps {
+//   params: {
+//       slug: string
+//   }
+// }
+
 
 export default function Events() {
   return (
@@ -6,7 +18,17 @@ export default function Events() {
       <code>/events</code>
       <h1>This is the Events page, bruh</h1>
       <Link href="/">Home</Link>
-      <Link href="/events/first-event">First Event</Link>
+      
+      {allPostsData.map(({ id, date, title }) => (
+            <li className="post" key={id}>
+              <Link href="/events/first-event">{title}</Link>
+              {/* {title} */}
+              <br />
+              {id}
+              <br />
+              {date}
+            </li>
+          ))}
     </main>
   )
 }

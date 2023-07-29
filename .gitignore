@@ -38,3 +38,5 @@ next-env.d.ts
 ai/build
 ai/node_modules
 .env
+
+.contentlayer
