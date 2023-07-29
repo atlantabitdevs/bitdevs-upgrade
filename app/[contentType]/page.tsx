@@ -1,8 +1,5 @@
 import Link from 'next/link'
-import {
-  ContentType,
-  getSortedMarkdownContent,
-} from '../../lib/parse-markdown-files'
+import { getSortedMarkdownContent } from '../../lib/parse-markdown-files'
 import MeetupName from '@/components/MeetupName'
 
 export default function Posts({ params }: { params: any }) {
