@@ -147,7 +147,7 @@ const components = {
       {...props}
     />
   ),
-  Image,
+  // Image, // TODO: Figure out why this messes with the build script
   Callout,
   Card: MdxCard,
 }
