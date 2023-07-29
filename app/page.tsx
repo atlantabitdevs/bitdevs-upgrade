@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { getSortedPostsData } from '../utils/posts'
+import { getSortedPostsData } from '../lib/parse-posts'
 import MeetupName from '@/components/MeetupName'
 
 const allPostsData = getSortedPostsData()
@@ -50,7 +50,7 @@ export default function Home({}) {
 
 // const page = async ({ params }: PageProps) => {
 //     const post = await getDocFromParams(params.slug)
-    
+
 //     console.log(post._raw.flattenedPath)
 
 //     // return <div>{JSON.stringify(post)}</div>
@@ -62,7 +62,6 @@ export default function Home({}) {
 //         onClick=
 //           "location.href=this.href+post._raw.flattenedPath;return false;"
 //         >hello</Link> */}
-
 
 //     </div>
 // }

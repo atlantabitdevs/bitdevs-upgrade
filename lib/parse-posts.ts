@@ -22,9 +22,9 @@ export function getSortedPostsData() {
     // Combine the data with the id
     return {
       id,
-      title: "Meetup Event",
-      date: "2009-01-03 00:00:00",
-      ...matterResult.data,      
+      title: 'Meetup Event',
+      date: '2009-01-03 00:00:00',
+      ...matterResult.data,
     }
   })
   // Sort posts by date
