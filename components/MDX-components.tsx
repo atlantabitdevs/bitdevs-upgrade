@@ -9,6 +9,31 @@ import { MdxCard } from "@/components/mdx-card"
 // TODO: Fix the liberal className?: explicit any usage
 
 const components = {
+  a: ({ className, href, children, 'data-no-summary': noSummary, ...props }: { className?: any, href?: string, children?: any, 'data-no-summary'?: string}) => {
+    if(noSummary){
+      return (
+        <a
+          className={cn("font-medium underline underline-offset-4", className)}
+          href={href}
+          {...props}
+        >
+          {children}
+        </a>
+      )
+    }
+    return (
+      <div>
+        <strong>SPECIAL SUMMARY LINK: </strong>
+        <a
+          className={cn("font-medium underline underline-offset-4", className)}
+          href={href}
+          {...props}
+        >
+          {children}
+        </a>
+      </div>
+    )
+  },
   h1: ({ className, ...props }: { className?: any}) => (
     <h1
       className={cn(
@@ -63,12 +88,12 @@ const components = {
       {...props}
     />
   ),
-  a: ({ className, ...props }: { className?: any}) => (
-    <a
-      className={cn("font-medium underline underline-offset-4", className)}
-      {...props}
-    />
-  ),
+  // a: ({ className, ...props }: { className?: any}) => (
+  //   <a
+  //     className={cn("font-medium underline underline-offset-4", className)}
+  //     {...props}
+  //   />
+  // ),
   p: ({ className, ...props }: { className?: any}) => (
     <p
       className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}

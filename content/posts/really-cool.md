@@ -5,6 +5,12 @@ date: '2023-07-21'
 
 ## Bitcoin ipsum dolor sit amet
 
+<a href="https://www.meetup.com/atlantabitdevs/" data-no-summary>This is a link I do not want summarized</a>
+
+[This is a link I want summarized](https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2023-July/021818.html)
+
+
+
 Block reward SHA-256 double-spend problem, hashrate hash SHA-256 block height segwit bitcoin! Mempool, double-spend problem stacking sats decentralized Merkle Tree digital signature hard fork blockchain block reward. Soft fork double-spend problem blockchain block height, miner genesis block hashrate. Private key bitcoin, timestamp server, transaction, block reward?
 
 ### Mining stacking sats, difficulty
