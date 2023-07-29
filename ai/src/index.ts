@@ -54,13 +54,13 @@ const main = async () => {
                 initAi.openai.createChatCompletion({
                   model,
                   messages: [
-                    { role: 'user', content: `Can you explaint this in great detail for me? \n ${summary.text}` },
+                    { role: 'user', content: `Can you summarize the text after the asterisk for me? Use no more than 160 words. Split into paragraphs where appropriate. * \n ${summary.text}` },
                   ],
                 }),
                 initAi.openai.createChatCompletion({
                   model,
                   messages: [
-                    { role: 'user', content: `Can you explain this in great detail like I am 15? ${summary.text} ` },
+                    { role: 'user', content: `Can you summarize the text after the asterisk for me? Use no more than 100 words. Split into paragraphs where appropriate. Write it for a reader that may not be familiar with the technical jargon in the original text. Assume the reader is 15. * ${summary.text} ` },
                   ],
                 }),
               ]);
