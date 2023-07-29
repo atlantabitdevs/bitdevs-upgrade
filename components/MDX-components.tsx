@@ -6,6 +6,8 @@ import { cn } from "@/lib/utils"
 import { Callout } from "@/components/callout"
 import { MdxCard } from "@/components/mdx-card"
 
+import SummaryLink from "./SummaryLink"
+
 // TODO: Fix the liberal className?: explicit any usage
 
 const components = {
@@ -22,16 +24,17 @@ const components = {
       )
     }
     return (
-      <div>
-        <strong>SPECIAL SUMMARY LINK: </strong>
-        <a
-          className={cn("font-medium underline underline-offset-4", className)}
-          href={href}
-          {...props}
-        >
-          {children}
-        </a>
-      </div>
+      <SummaryLink href={href} title={children} />
+      // <div>
+      //   <strong>SPECIAL SUMMARY LINK: </strong>
+      //   <a
+      //     className={cn("font-medium underline underline-offset-4", className)}
+      //     href={href}
+      //     {...props}
+      //   >
+      //     {children}
+      //   </a>
+      // </div>
     )
   },
   h1: ({ className, ...props }: { className?: any}) => (
@@ -180,14 +183,16 @@ const components = {
 }
 
 interface MdxProps {
-  code: string
+  code: string,
+  slug: string
 }
 
-export function Mdx({ code }: MdxProps) {
+export function Mdx({ code, slug }: MdxProps) {
   const Component = useMDXComponent(code)
 
   return (
     <div className="mdx">
+      {slug}
       <Component components={components} />
     </div>
   )

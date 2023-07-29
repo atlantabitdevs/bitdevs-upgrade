@@ -27,9 +27,11 @@ const page = async ({ params }: PageProps) => {
     
     console.log(post._raw.flattenedPath)
 
+    console.log(post._raw.sourceFileName.slice(0, -3))
+
     // return <div>{JSON.stringify(post)}</div>
     return <div>
-        <Mdx code={post.body.code} />
+        <Mdx slug={post._raw.sourceFileName.slice(0, -3)} code={post.body.code} />
     </div>
 }
 
