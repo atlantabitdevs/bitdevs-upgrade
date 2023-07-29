@@ -8,8 +8,6 @@ import { MdxCard } from "@/components/mdx-card"
 
 import SummaryLink from "./SummaryLink"
 
-
-
 interface MdxProps {
   code: string,
   slug: string
@@ -22,7 +20,6 @@ export function Mdx({ code, slug }: MdxProps) {
 
   const components = {
     a: ({ className, href, children, 'data-no-summary': noSummary, ...props }: { className?: any, href?: string, children?: any, 'data-no-summary'?: string}) => {
-      console.log(slug)
       if(noSummary){
         return (
           <a
