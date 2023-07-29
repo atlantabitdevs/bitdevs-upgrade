@@ -89,12 +89,6 @@ export function Mdx({ code, slug }: MdxProps) {
         {...props}
       />
     ),
-    // a: ({ className, ...props }: { className?: any}) => (
-    //   <a
-    //     className={cn("font-medium underline underline-offset-4", className)}
-    //     {...props}
-    //   />
-    // ),
     p: ({ className, ...props }: { className?: any}) => (
       <p
         className={cn("leading-7 [&:not(:first-child)]:mt-6", className)}
@@ -180,7 +174,7 @@ export function Mdx({ code, slug }: MdxProps) {
     Card: MdxCard,
   }
 
-  
+
   return (
     <div className="mdx">
       {slug}
