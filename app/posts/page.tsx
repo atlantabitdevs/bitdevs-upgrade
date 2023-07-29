@@ -5,17 +5,17 @@ import {
 } from '../../lib/parse-markdown-files'
 import MeetupName from '@/components/MeetupName'
 
-const allEventsData = getSortedMarkdownContent(ContentType.Events)
+const allPostsData = getSortedMarkdownContent(ContentType.Posts)
 
-export default function Events({}) {
+export default function Posts({}) {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <MeetupName />
-      <h1>This is the Events page, bruh</h1>
+      <h1>This is the Posts page, bruh</h1>
       <Link href="/">Home</Link>
       <ul>
-        {allEventsData.map(({ id, date, title }) => (
-          <li className="event" key={id}>
+        {allPostsData.map(({ id, date, title }) => (
+          <li className="post" key={id}>
             {title}
             <br />
             {id}
