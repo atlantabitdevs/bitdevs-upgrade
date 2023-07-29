@@ -62,15 +62,15 @@ const computedFields = {
             },
           },
         ],
-        [
-          rehypeAutolinkHeadings,
-          {
-            properties: {
-              className: ["subheading-anchor"],
-              ariaLabel: "Link to section",
-            },
-          },
-        ],
+        // [
+        //   rehypeAutolinkHeadings,
+        //   {
+        //     properties: {
+        //       className: ["subheading-anchor"],
+        //       ariaLabel: "Link to section",
+        //     },
+        //   },
+        // ],
       ],
     },
   })
