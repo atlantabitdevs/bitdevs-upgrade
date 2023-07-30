@@ -1,6 +1,5 @@
-import { link, readFileSync } from 'fs';
-
 import { isValidURL } from './utils';
+import { readFileSync } from 'fs';
 
 type Args = {
   path: string;
@@ -9,15 +8,8 @@ const getLinks = async ({ path }: Args) => {
   const linksRegex = /\[([^\[]+)\](\(.*\))/gm;
   const singleMatchRegex = /\[([^\[]+)\]\((.*)\)/;
   const file = readFileSync(path, 'utf-8');
-  const startIndex = file.indexOf('### Mailing Lists');
 
-  if (startIndex === -1) {
-    throw new Error('Header not found');
-  }
-
-  const restOfFile = file.slice(startIndex);
-
-  const matches = restOfFile.match(linksRegex) ?? [];
+  const matches = file.match(linksRegex) ?? [];
   const links = [];
 
   for (let i = 0; i < matches.length; i++) {
