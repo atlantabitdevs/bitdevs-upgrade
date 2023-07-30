@@ -12,7 +12,7 @@ export default function SummaryLink(props: Props) {
   // TODO: Figure out how to prevent this from being housed in a <p> tag when rendered, I want to use more semantic HTML inside this component
 
   return (
-    <div className="bg-dark text-white p-4 space-y-4">
+    <div className="bg-dark p-4 space-y-4">
       {' '}
       {/* Added dark background, white text, padding, and vertical spacing */}
       {!!props.data
