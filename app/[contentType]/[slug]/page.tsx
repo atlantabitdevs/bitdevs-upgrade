@@ -36,7 +36,6 @@ const page = async ({ params }: PageProps) => {
     return <div>404 sorry you poor bitdev</div>
   }
 
-  // return <div>{JSON.stringify(post)}</div>
   return (
     <div>
       {params.contentType === contentType && data === undefined ? (

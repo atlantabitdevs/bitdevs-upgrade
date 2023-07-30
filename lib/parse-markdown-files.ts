@@ -27,7 +27,6 @@ interface MarkdownData {
 }
 
 export function getSortedMarkdownContent(contentType: ContentType) {
-  // console.log(contentType)
   const contentDirectory = path.join(process.cwd(), `/content/${contentType}`)
 
   // Get file names under /posts
