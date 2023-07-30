@@ -12,9 +12,10 @@ interface MdxProps {
   code: string
   slug: string
   jsonData: ParsedData | undefined
+  page: boolean
 }
 
-export function Mdx({ code, slug, jsonData }: MdxProps) {
+export function Mdx({ code, slug, jsonData, page=false }: MdxProps) {
   const Component = useMDXComponent(code)
 
   // TODO: Fix the liberal className?: explicit any usage
