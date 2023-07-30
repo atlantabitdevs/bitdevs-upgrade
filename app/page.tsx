@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { BitcoinCircleIcon } from '@bitcoin-design/bitcoin-icons-react/outline'
-import Header from '@/components/Header'
 import { getSortedMarkdownContent, ContentType } from '@/lib/parse-markdown-files'
 
 export default function Home({}) {
@@ -9,19 +8,19 @@ export default function Home({}) {
 
   return (
     <main className="">
-      <Header />
-
       <h1>This is the home page, bruh</h1>
       <hr />
       <h2>Events Post</h2>
       <ul>
         {eventsContentData.map(({ id, date, title }) => (
           <li className="post" key={id}>
-            <BitcoinCircleIcon className="w-12 h-12" /> {title}
-            <br />
-            {id}
-            <br />
-            {date}
+            <a href={`/events/${id}`}>
+              <BitcoinCircleIcon className="w-12 h-12" /> {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </a>
           </li>
         ))}
       </ul>
@@ -33,11 +32,13 @@ export default function Home({}) {
       <ul>
         {postsContentData.map(({ id, date, title }) => (
           <li className="post" key={id}>
-            {title}
-            <br />
-            {id}
-            <br />
-            {date}
+            <a href={`/posts/${id}`}>
+              {title}
+              <br />
+              {id}
+              <br />
+              {date}
+            </a>
           </li>
         ))}
       </ul>
