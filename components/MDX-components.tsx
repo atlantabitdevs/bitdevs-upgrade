@@ -201,7 +201,6 @@ export function Mdx({ code, slug, jsonData }: MdxProps) {
 
   return (
     <div className="mdx">
-      {slug}
       <Component components={components} />
     </div>
   )

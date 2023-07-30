@@ -4,7 +4,7 @@ import "./Header.css"
 
 const Header =() => {
     return (
-        <header className="header w-full border-b-2 p-6 flex flex-row justify-between font-sans sticky top-0 left-0 w-full bg-white z-50 shadow-lg">
+        <header className="header w-full p-6 flex flex-row justify-between font-sans sticky top-0 left-0 w-full bg-white z-50 drop-shadow-header">
             <h1 className="font-black text-2xl">
                 <a href="/" className="no-underline"><MeetupName /></a>
             </h1>
