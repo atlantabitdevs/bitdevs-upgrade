@@ -34,8 +34,6 @@ async function getDocFromParams(params: Args) {
 const page = async ({ params }: PageProps) => {
   const { post, data } = await getDocFromParams(params)
 
-
-
   if (!post) {
     return <div>404 sorry you poor bitdev</div>
   }
