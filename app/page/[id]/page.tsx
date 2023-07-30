@@ -1,8 +1,29 @@
+import getJsonFile, { ParsedData } from '@/lib/get-json'
 import { getPageContentFromMarkdown } from '@/lib/parse-markdown-files'
-
+import { Mdx } from '@/components/MDX-components'
+import { allDocs } from 'contentlayer/generated'
 import Link from 'next/link'
 
-export default function Posts({ params }: { params: any }) {
+const contentType = 'page'
+
+type Args = {
+  slug: string
+  contentType: string
+}
+
+async function getDocFromParams(params: Args) {
+  let data: ParsedData | undefined
+  const post = allDocs.find((post) => post.slugAsParams === params.slug)
+
+  if (params.contentType === contentType) {
+    data = await getJsonFile({ fileName: params.slug })
+  }
+
+  return { post, data }
+}
+
+export default async function Posts({ params }: { params: any }) {
+  const { post, data } = await getDocFromParams(params)
   const currentPageData = getPageContentFromMarkdown().filter(
     (page) => page.id === params.id,
   )[0]
@@ -29,6 +50,12 @@ export default function Posts({ params }: { params: any }) {
         ))}
       </ul>
       */}
+      <Mdx
+        code={post.body.code}
+        slug={params.slug}
+        jsonData={data}
+        page={true}
+      />
     </main>
   )
 }
