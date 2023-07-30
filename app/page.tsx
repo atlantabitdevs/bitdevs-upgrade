@@ -18,7 +18,7 @@ export default function Home({}) {
   const postsContentData = getSortedMarkdownContent(ContentType.Posts)
 
   return (
-    <>
+    <main className="container mx-auto max-w-5xl px-4">
       {/* Intro Section */}
       <div className="border-b-gray-300 border-b py-10 md:py-20 flex flex-col gap-4 md:gap-10">
         <div className="w-40 h-40 md:w-[200px] md:h-[200px] rounded-full overflow-hidden">
@@ -85,6 +85,6 @@ export default function Home({}) {
           See All Blog Posts <ArrowRightIcon className="w-6 h-6" />
         </Link>
       </div>
-    </>
+    </main>
   )
 }
