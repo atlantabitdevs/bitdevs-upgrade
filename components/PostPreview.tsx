@@ -9,15 +9,15 @@ interface PostPreviewProps {
 
 export default function PostPreview(props:PostPreviewProps){
     return(
-        <div>
-            <div>    
+        <article>
+            <header className="flex flex-col gap-1">   
                 <h3>
                     <a href={"/" + props.type + "/" + props.id} className="no-underline">{props.title}</a>
                 </h3>
-                <time>{props.date}</time>
-                <p>{props.author}</p>
-            </div>
+                <time className="font-sans text-gray-500 text-lg order-first">{props.date}</time>
+                {props.author ? <p className="order-last text-xl font-sans">{props.author}</p> : ``}
+            </header>
             <p>{props.previewText}</p>
-        </div>
+        </article>
     )
 }

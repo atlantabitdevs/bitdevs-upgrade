@@ -68,16 +68,14 @@ export default function Home({}) {
       <div className="flex flex-col gap-10 py-10">
         <h2 className="text-center">Recent Blog Posts</h2>
 
-        {postsContentData.map(({ id, date, title }, i) => (
+        {postsContentData.map(({ id, date, title, author }) => (
           <PostPreview
             id={id}
             title={title}
             date={date}
             type="posts"
-            previewText={
-              'Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion.'
-            }
-            key={i}
+            author={author}
+            previewText={"Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion."}
           />
         ))}
 

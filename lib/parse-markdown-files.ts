@@ -18,6 +18,14 @@ export enum ContentType {
   Posts = 'posts',
   Events = 'events',
 }
+
+interface MarkdownData {
+  id: string;
+  title: string;
+  date: string;
+  author?: string;
+}
+
 export function getSortedMarkdownContent(contentType: ContentType) {
   // console.log(contentType)
   const contentDirectory = path.join(process.cwd(), `/content/${contentType}`)
@@ -37,12 +45,14 @@ export function getSortedMarkdownContent(contentType: ContentType) {
     const matterResult = matter(fileContents)
 
     // Combine the data with the id
-    return {
+    const markdownData: MarkdownData = {
       id,
       title: 'Example Title',
       date: '2009-01-03 00:00:00',
       ...matterResult.data,
     }
+    
+    return markdownData
   })
   // Sort posts by date
   const returnValue = allMarkdownData

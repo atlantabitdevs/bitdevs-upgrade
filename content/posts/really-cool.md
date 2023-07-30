@@ -1,6 +1,7 @@
 ---
 title: 'Really Cool Topic Title'
 date: '2023-07-21'
+author: 'New BitDevs Organizers'
 ---
 
 ## Bitcoin ipsum dolor sit amet
