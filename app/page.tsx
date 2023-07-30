@@ -11,7 +11,8 @@ export default function Home({}) {
   const postsContentData = getSortedMarkdownContent(ContentType.Posts)
 
   return (
-    <main className="container mx-auto max-w-5xl px-4">
+    <>
+      {/* Intro Section */}
       <div className="border-b-gray-300 border-b py-10 md:py-20 flex flex-col gap-4 md:gap-10">
         <div className="w-40 h-40 md:w-[200px] md:h-[200px] rounded-full overflow-hidden">
           <Image src={newBitDevsDefault} alt="" width="400" height="200" className="object-cover h-full" />
@@ -26,6 +27,7 @@ export default function Home({}) {
         </p>
       </div>
       
+      {/* Events */}
       <div className="flex flex-col gap-10 border-b border-b-400 py-10">
         <h2>Upcoming and Recent Events</h2>
 
@@ -43,7 +45,8 @@ export default function Home({}) {
           See All Events <ArrowRightIcon className="w-6 h-6" />
         </Link>
       </div>
-
+      
+      {/* Posts */}
       <div className="flex flex-col gap-10 py-10">
         <h2>Recent Blog Posts</h2>
 
@@ -62,6 +65,6 @@ export default function Home({}) {
         </Link>
 
       </div>
-    </main>
+    </>
   )
 }
