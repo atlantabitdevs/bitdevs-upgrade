@@ -1,5 +1,7 @@
 # bitdevs-upgrade
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3dabcadd-d728-4a01-b01e-b7a556e40c29/deploy-status)](https://app.netlify.com/sites/bitdevs-upgrade/deploys)
+
 This is a project to improve the UX of BitDevs websites and add AI generated summaries to help new attendees.
 
 ## AI Scraper
