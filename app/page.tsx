@@ -16,7 +16,6 @@ export default function Home({}) {
         <div className="w-[200px] h-[200px] rounded-full overflow-hidden">
           <Image src={newBitDevsDefault} alt="" width="400" height="200" className="object-cover h-full" />
         </div>
-        
 
         <h1 className="font-extrabold text-[100px]"><MeetupName /></h1>
 
@@ -30,9 +29,10 @@ export default function Home({}) {
 
           {eventsContentData.map(({ id, date, title }) => (
             <PostPreview
-              key={id}
+              id={id}
               title={title}
               date={date}
+              type="events"
               previewText={"Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion."}
             />
           ))}
@@ -48,9 +48,10 @@ export default function Home({}) {
         <div className="flex flex-col gap-4">
           {postsContentData.map(({ id, date, title }) => (
             <PostPreview
-              key={id}
+              id={id}
               title={title}
               date={date}
+              type="posts"
               previewText={"Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion."}
             />
           ))}
