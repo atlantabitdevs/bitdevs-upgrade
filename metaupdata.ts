@@ -21,4 +21,18 @@ export const metaupdata: Metaupdata = {
       rgb: 'rgb(255, 255, 255)',
     },
   },
+  mainNav: [
+    {
+      text: 'Home',
+      link: '/'
+    },
+    {
+      text: 'About',
+      link: '/about'
+    },
+    {
+      text: 'Meetup',
+      link: 'https://www.meetup.com/BitDevsNYC/'
+    }
+  ],
 }

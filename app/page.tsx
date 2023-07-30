@@ -1,46 +1,63 @@
 import Link from 'next/link'
-import MeetupName from '@/components/MeetupName'
+import { BitcoinCircleIcon, ArrowRightIcon } from '@bitcoin-design/bitcoin-icons-react/outline'
 import { getSortedMarkdownContent, ContentType } from '@/lib/parse-markdown-files'
+import MeetupName from '@/components/MeetupName'
+import PostPreview from '@/components/PostPreview'
+import Image from 'next/image'
+import newBitDevsDefault from "../public/new-bitdevs-default.jpg"
 
 export default function Home({}) {
   const eventsContentData = getSortedMarkdownContent(ContentType.Events)
   const postsContentData = getSortedMarkdownContent(ContentType.Posts)
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <MeetupName />
-      <h1>This is the home page, bruh</h1>
-      <hr />
-      <h2>Events Post</h2>
-      <ul>
-        {eventsContentData.map(({ id, date, title }) => (
-          <li className="post" key={id}>
-            {title}
-            <br />
-            {id}
-            <br />
-            {date}
-          </li>
-        ))}
-      </ul>
+    <main className="container mx-auto max-w-5xl">
+      <div className="border-b-gray-300 border-b py-20">
+        <div className="w-[200px] h-[200px] rounded-full overflow-hidden">
+          <Image src={newBitDevsDefault} alt="" width="400" height="200" className="object-cover h-full" />
+        </div>
+        
 
-      <Link href="/events" style={{ textDecoration: 'underline' }}>
-        Click here to see all events...
-      </Link>
-      <h2>Blog Posts</h2>
-      <ul>
-        {postsContentData.map(({ id, date, title }) => (
-          <li className="post" key={id}>
-            {title}
-            <br />
-            {id}
-            <br />
-            {date}
-          </li>
+        <h1 className="font-extrabold text-[100px]"><MeetupName /></h1>
+
+        <p className="text-[2.5rem]">
+          BitDevs is a community for those interested in discussing and participating in the research and development of Bitcoin and related protocols.
+        </p>
+      </div>
+      
+
+      <h2>Upcoming and Recent Events</h2>
+
+      <div className="flex flex-col gap-4">
+        {eventsContentData.map(({ id, date, title }) => (
+          <PostPreview
+            key={id}
+            title={title}
+            date={date}
+            previewText={"Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion."}
+          />
         ))}
-      </ul>
-      <Link href="/posts" style={{ textDecoration: 'underline' }}>
-        Click here to see all posts...
+      </div>
+
+      <Link href="/events" className="flex gap-2">
+        See All Events <ArrowRightIcon className="w-6 h-6" />
+      </Link>
+
+      <h2>Recent Blog Posts</h2>
+
+      <div className="flex flex-col gap-4">
+        {postsContentData.map(({ id, date, title }) => (
+          <PostPreview
+            key={id}
+            title={title}
+            date={date}
+            previewText={"Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion."}
+          />
+        ))}
+      </div>
+
+      <Link href="/posts" className="flex gap-2">
+        See All Blog Posts <ArrowRightIcon className="w-6 h-6" />
       </Link>
     </main>
   )

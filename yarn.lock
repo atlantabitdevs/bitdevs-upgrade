@@ -35,6 +35,11 @@
   dependencies:
     regenerator-runtime "^0.13.11"
 
+"@bitcoin-design/bitcoin-icons-react@^0.1.9":
+  version "0.1.9"
+  resolved "https://registry.yarnpkg.com/@bitcoin-design/bitcoin-icons-react/-/bitcoin-icons-react-0.1.9.tgz#25c18808f167e242cd15ba27c185d785f2728980"
+  integrity sha512-nJvTD1+zG/ffHdMeGQ39vdsmEFo9WcCIP1RlR7ZpZoP2H+IgKwzwow8VSY6ebroLoCT7WWtUPJQSbgQwgWYrFg==
+
 "@contentlayer/cli@0.3.4":
   version "0.3.4"
   resolved "https://registry.yarnpkg.com/@contentlayer/cli/-/cli-0.3.4.tgz#a3b322aa30cd2c5db09c69b530928e80aebddae4"

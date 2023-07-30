@@ -17,5 +17,9 @@ export interface Metaupdata {
       hex: string
       rgb: string
     }
-  }
+  },
+  mainNav: {
+    text: string,
+    link: string
+  }[]
 }
