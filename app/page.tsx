@@ -18,9 +18,10 @@ export default function Home({}) {
   const postsContentData = getSortedMarkdownContent(ContentType.Posts)
 
   return (
-    <main className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl">
-      <div className="border-b-gray-300 border-b py-20">
-        <div className="w-[200px] h-[200px] sm:w-[250px] sm:h-[250px] lg:w-[300px] lg:h-[300px] rounded-full overflow-hidden mx-auto">
+    <>
+      {/* Intro Section */}
+      <div className="border-b-gray-300 border-b py-10 md:py-20 flex flex-col gap-4 md:gap-10">
+        <div className="w-40 h-40 md:w-[200px] md:h-[200px] rounded-full overflow-hidden">
           <Image
             src={newBitDevsDefault}
             alt=""
@@ -30,21 +31,22 @@ export default function Home({}) {
           />
         </div>
 
-        <h1 className="font-extrabold text-[100px] sm:text-[120px] lg:text-[140px] text-center">
+        <h1 className="font-extrabold text-4xl md:text-[100px]">
           <MeetupName />
         </h1>
 
-        <p className="text-[2.5rem] sm:text-[3rem] lg:text-[3.5rem] text-center">
+        <p className="text-lg md:text-[2.5rem] md:leading-normal">
           BitDevs is a community for those interested in discussing and
           participating in the research and development of Bitcoin and related
           protocols.
         </p>
       </div>
 
+      {/* Events */}
       <div className="flex flex-col gap-10 border-b border-b-400 py-10">
         <h2 className="text-center">Upcoming and Recent Events</h2>
 
-        {eventsContentData.map(({ id, date, title }, i) => (
+        {eventsContentData.map(({ id, date, title }) => (
           <PostPreview
             id={id}
             title={title}
@@ -53,37 +55,34 @@ export default function Home({}) {
             previewText={
               'Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion.'
             }
-            key={i}
           />
         ))}
 
-        <Link href="/events" className="flex gap-2 justify-center">
+        <Link href="/events" className="flex gap-2 font-sans">
           See All Events <ArrowRightIcon className="w-6 h-6" />
         </Link>
       </div>
 
+      {/* Posts */}
       <div className="flex flex-col gap-10 py-10">
         <h2 className="text-center">Recent Blog Posts</h2>
 
-        <div className="flex flex-col gap-4">
-          {postsContentData.map(({ id, date, title }, i) => (
-            <PostPreview
-              id={id}
-              title={title}
-              date={date}
-              type="posts"
-              previewText={
-                'Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion.'
-              }
-              key={i}
-            />
-          ))}
-        </div>
+        {postsContentData.map(({ id, date, title }) => (
+          <PostPreview
+            id={id}
+            title={title}
+            date={date}
+            type="posts"
+            previewText={
+              'Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion.'
+            }
+          />
+        ))}
 
-        <Link href="/posts" className="flex gap-2 justify-center">
+        <Link href="/posts" className="flex gap-2 font-sans">
           See All Blog Posts <ArrowRightIcon className="w-6 h-6" />
         </Link>
       </div>
-    </main>
+    </>
   )
 }
