@@ -33,7 +33,7 @@ export function Mdx({ code, slug, jsonData, page=false }: MdxProps) {
       children?: any
       'data-no-summary'?: string
     }) => {
-      if (noSummary) {
+      if (noSummary || page) {
         return (
           <a
             className={cn(
