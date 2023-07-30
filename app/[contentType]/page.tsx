@@ -5,10 +5,12 @@ import {
 
 import PostPreview from '@/components/PostPreview'
 
-type Args = {
-  contentType: ContentType
+type PageProps = {
+  params: {
+    contentType: ContentType
+  }
 }
-export default function Posts(params: Args) {
+export default function Page({ params }: PageProps) {
   const { contentType } = params
   const allContentData = getSortedMarkdownContent(contentType)
 
