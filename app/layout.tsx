@@ -32,9 +32,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className + " " + ibmPlexSerif.className}>
         <Header />
-        <main className="container mx-auto max-w-5xl px-4">
           {children}
-        </main>
       </body>
     </html>
   )

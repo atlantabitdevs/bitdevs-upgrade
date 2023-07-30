@@ -53,7 +53,7 @@ export function Mdx({ code, slug, jsonData }: MdxProps) {
     h1: ({ className, ...props }: { className?: any }) => (
       <h1
         className={cn(
-          'mt-2 scroll-m-20 text-4xl font-bold tracking-tight',
+          '',
           className
         )}
         {...props}
@@ -62,7 +62,7 @@ export function Mdx({ code, slug, jsonData }: MdxProps) {
     h2: ({ className, ...props }: { className?: any }) => (
       <h2
         className={cn(
-          'mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0',
+          '',
           className
         )}
         {...props}
@@ -71,7 +71,7 @@ export function Mdx({ code, slug, jsonData }: MdxProps) {
     h3: ({ className, ...props }: { className?: any }) => (
       <h3
         className={cn(
-          'mt-8 scroll-m-20 text-2xl font-semibold tracking-tight',
+          '',
           className
         )}
         {...props}
@@ -80,7 +80,7 @@ export function Mdx({ code, slug, jsonData }: MdxProps) {
     h4: ({ className, ...props }: { className?: any }) => (
       <h4
         className={cn(
-          'mt-8 scroll-m-20 text-xl font-semibold tracking-tight',
+          '',
           className
         )}
         {...props}
@@ -89,7 +89,7 @@ export function Mdx({ code, slug, jsonData }: MdxProps) {
     h5: ({ className, ...props }: { className?: any }) => (
       <h5
         className={cn(
-          'mt-8 scroll-m-20 text-lg font-semibold tracking-tight',
+          '',
           className
         )}
         {...props}
@@ -98,7 +98,7 @@ export function Mdx({ code, slug, jsonData }: MdxProps) {
     h6: ({ className, ...props }: { className?: any }) => (
       <h6
         className={cn(
-          'mt-8 scroll-m-20 text-base font-semibold tracking-tight',
+          '',
           className
         )}
         {...props}
@@ -201,7 +201,6 @@ export function Mdx({ code, slug, jsonData }: MdxProps) {
 
   return (
     <div className="mdx">
-      {slug}
       <Component components={components} />
     </div>
   )
