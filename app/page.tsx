@@ -25,40 +25,42 @@ export default function Home({}) {
         </p>
       </div>
       
+      <div className="flex flex-col gap-10 border-b border-b-400 py-10">
+        <h2>Upcoming and Recent Events</h2>
 
-      <h2>Upcoming and Recent Events</h2>
+          {eventsContentData.map(({ id, date, title }) => (
+            <PostPreview
+              key={id}
+              title={title}
+              date={date}
+              previewText={"Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion."}
+            />
+          ))}
 
-      <div className="flex flex-col gap-4">
-        {eventsContentData.map(({ id, date, title }) => (
-          <PostPreview
-            key={id}
-            title={title}
-            date={date}
-            previewText={"Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion."}
-          />
-        ))}
+        <Link href="/events" className="flex gap-2">
+          See All Events <ArrowRightIcon className="w-6 h-6" />
+        </Link>
       </div>
 
-      <Link href="/events" className="flex gap-2">
-        See All Events <ArrowRightIcon className="w-6 h-6" />
-      </Link>
+      <div className="flex flex-col gap-10 py-10">
+        <h2>Recent Blog Posts</h2>
 
-      <h2>Recent Blog Posts</h2>
+        <div className="flex flex-col gap-4">
+          {postsContentData.map(({ id, date, title }) => (
+            <PostPreview
+              key={id}
+              title={title}
+              date={date}
+              previewText={"Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion."}
+            />
+          ))}
+        </div>
 
-      <div className="flex flex-col gap-4">
-        {postsContentData.map(({ id, date, title }) => (
-          <PostPreview
-            key={id}
-            title={title}
-            date={date}
-            previewText={"Our monthly Socratic Seminar events are formatted to foster debate, information sharing and lively discussion."}
-          />
-        ))}
+        <Link href="/posts" className="flex gap-2">
+          See All Blog Posts <ArrowRightIcon className="w-6 h-6" />
+        </Link>
+
       </div>
-
-      <Link href="/posts" className="flex gap-2">
-        See All Blog Posts <ArrowRightIcon className="w-6 h-6" />
-      </Link>
     </main>
   )
 }
