@@ -1,10 +1,11 @@
 import getJsonFile, { ParsedData } from '@/lib/get-json'
+
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 import { FC } from 'react'
+import Image from 'next/image'
 import { Mdx } from '@/components/MDX-components'
 import { allDocs } from 'contentlayer/generated'
-import Image from 'next/image'
-import socraticDiscussion from "public/socratic-discussion-default.jpg"
+import socraticDiscussion from 'public/socratic-discussion-default.jpg'
 
 const contentType = 'events'
 
@@ -47,7 +48,7 @@ const page = async ({ params }: PageProps) => {
             <h1 className="text-4xl font-black">{post.title}</h1>
             <time className="text-2xl text-gray-500">{post.date}</time>
             <p className="text-xl flex flex-row gap-2 items-center">
-              <a href={""}>Meetup Link</a>
+              <a href={''}>Meetup Link</a>
               <ArrowTopRightOnSquareIcon className="w-6 h-6" />
             </p>
           </header>
@@ -61,12 +62,18 @@ const page = async ({ params }: PageProps) => {
         {/* Content */}
         <div className="ml-10 relative z-1 w-full">
           <div className="container mx-auto max-w-5xl px-4 pb-4">
-            <Image src={socraticDiscussion} width="960" height="540" className="w-full h-auto" alt="" />
+            <Image
+              src={socraticDiscussion}
+              width="960"
+              height="540"
+              className="w-full h-auto"
+              alt=""
+            />
 
             {params.contentType === contentType && data === undefined ? (
               <div>{`No summary generated for ${params.slug}`}</div>
             ) : null}
-            
+
             <Mdx code={post.body.code} slug={params.slug} jsonData={data} />
           </div>
         </div>
