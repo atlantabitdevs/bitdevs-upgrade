@@ -65,13 +65,3 @@ h6,
 .h6 {
   @apply font-extrabold text-lg md:text-lg;
 }
-
-html body {
-  font-family: Helvetica, sans-serif;
-}
-
-.gradient-text {
-  background: -webkit-linear-gradient(rgb(239, 239, 239), rgb(159, 159, 159));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
