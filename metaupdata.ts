@@ -35,5 +35,5 @@ export const metaupdata: Metaupdata = {
       link: 'https://www.meetup.com/BitDevsNYC/',
     },
   ],
-  image: '/new-bitdevs-alt.png',
+  image: '/new-bitdevs-default.jpg',
 }
