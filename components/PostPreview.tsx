@@ -10,17 +10,17 @@ interface PostPreviewProps {
 export default function PostPreview(props: PostPreviewProps) {
   return (
     <article>
-      <header className="flex flex-col gap-1">
+      <header className="flex flex-col gap-1 ">
         <h3>
           <a href={'/' + props.type + '/' + props.id} className="no-underline">
             {props.title}
           </a>
         </h3>
-        <time className="font-sans text-gray-500 text-lg order-first">
+        <time className="font-sans text-gray-500 text-lg order-first ">
           {props.date}
         </time>
         {props.author ? (
-          <p className="order-last text-xl font-sans">{props.author}</p>
+          <p className="order-last text-xl font-sans ">{props.author}</p>
         ) : (
           ``
         )}
