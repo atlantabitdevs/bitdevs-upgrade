@@ -5,6 +5,7 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: ['class'],
   theme: {
     extend: {
       backgroundImage: {
@@ -13,14 +14,14 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       dropShadow: {
-        'header': '0 4px 24px rgba(0, 0, 0, 0.04)',
-        'sidebar': '4px 0 24px rgba(0, 0, 0, 0.04)',
-      }
+        header: '0 4px 24px rgba(0, 0, 0, 0.04)',
+        sidebar: '4px 0 24px rgba(0, 0, 0, 0.04)',
+      },
     },
     fontFamily: {
       sans: ['Inter', 'sans-serif'],
-      serif: ['IBM Plex Serif', 'serif']
-    }
+      serif: ['IBM Plex Serif', 'serif'],
+    },
   },
   plugins: [],
 }

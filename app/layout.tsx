@@ -1,8 +1,12 @@
 import './globals.css'
-import type { Metadata } from 'next'
-import { Inter, IBM_Plex_Serif } from 'next/font/google'
-import { metaupdata } from '@/metaupdata'
+
+import { IBM_Plex_Serif, Inter } from 'next/font/google'
+
 import Header from '@/components/Header/Header'
+import type { Metadata } from 'next'
+import { ThemeProvider } from './theme-provider'
+import { metaupdata } from '@/metaupdata'
+import { switchThemeDuration } from '@/lib/utils'
 
 const {
   city: { name, position },
@@ -30,9 +34,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className + ' ' + ibmPlexSerif.className}>
-        <Header />
-        {children}
+      <body
+        className={`${
+          inter.className + ' ' + ibmPlexSerif.className
+        } bg-slate-50 dark:bg-[#0d1117] ${switchThemeDuration}`}
+      >
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <Header />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

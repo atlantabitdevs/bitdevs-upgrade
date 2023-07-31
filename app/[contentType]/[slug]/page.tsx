@@ -24,8 +24,6 @@ type Args = {
 async function getDocFromParams(params: Args) {
   let data: ParsedData | undefined
   const post = allDocs.find((post) => post.slugAsParams === params.slug)
-  // console.log('allDocs: ', allDocs)
-  console.log('params: ', params)
 
   if (params.contentType === contentType) {
     data = await getJsonFile({ fileName: params.slug })
@@ -42,10 +40,10 @@ const page = async ({ params }: PageProps) => {
   }
 
   return (
-    <main className="w-full">
+    <main className="w-full dark:text-white">
       <article className="flex flex-row w-full">
         {/* Nav */}
-        <div className="w-1/3 min-w-[300px] max-w-[480px] h-screen p-8 drop-shadow-sidebar sticky top-[82px] left-0 z-50 bg-white overflow-y-auto flex flex-col gap-4">
+        <div className="w-1/3 min-w-[300px] max-w-[480px] h-screen p-8 drop-shadow-sidebar sticky top-[82px] left-0 z-[49] bg-white overflow-y-auto flex flex-col gap-4">
           <header className="font-sans flex flex-col gap-2">
             <h1 className="text-4xl font-black">{post.title}</h1>
             <time className="text-2xl text-gray-500">{post.date}</time>
