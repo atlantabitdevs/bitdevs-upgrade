@@ -17,9 +17,12 @@ export interface Metaupdata {
       hex: string
       rgb: string
     }
-  },
-  mainNav: {
-    text: string,
-    link: string
-  }[]
+  }
+  mainNav: NavItemType[]
+  image: string
+}
+
+type NavItemType = {
+  text: string
+  link: string
 }

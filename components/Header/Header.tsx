@@ -1,5 +1,4 @@
 import './Header.css'
-
 import MeetupName from '../MeetupName'
 import { ThemeSwitcher } from '../ThemeSwitcher'
 import { metaupdata } from '@/metaupdata'
