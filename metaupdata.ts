@@ -24,15 +24,16 @@ export const metaupdata: Metaupdata = {
   mainNav: [
     {
       text: 'Home',
-      link: '/'
+      link: '/',
     },
     {
       text: 'About',
-      link: '/page/about'
+      link: '/page/about',
     },
     {
       text: 'Meetup',
-      link: 'https://www.meetup.com/BitDevsNYC/'
-    }
+      link: 'https://www.meetup.com/BitDevsNYC/',
+    },
   ],
+  image: '/new-bitdevs-alt.png',
 }

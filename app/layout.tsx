@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ['latin'] })
 const ibmPlexSerif = IBM_Plex_Serif({
   weight: ['400', '600'],
   style: ['normal', 'italic'],
-  subsets: ['latin']
+  subsets: ['latin'],
 })
 
 export const metadata: Metadata = {
@@ -30,9 +30,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className + " " + ibmPlexSerif.className}>
+      <body className={inter.className + ' ' + ibmPlexSerif.className}>
         <Header />
-          {children}
+        {children}
       </body>
     </html>
   )
