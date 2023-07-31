@@ -11,7 +11,7 @@ import { useMDXComponent } from 'next-contentlayer/hooks'
 interface MdxProps {
   code: string
   slug: string
-  jsonData: ParsedData | undefined
+  jsonData?: ParsedData | undefined
   page: boolean
 }
 

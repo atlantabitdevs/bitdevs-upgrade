@@ -24,7 +24,8 @@ type Args = {
 async function getDocFromParams(params: Args) {
   let data: ParsedData | undefined
   const post = allDocs.find((post) => post.slugAsParams === params.slug)
-  console.log('allDocs: ', allDocs)
+  // console.log('allDocs: ', allDocs)
+  console.log('params: ', params)
 
   if (params.contentType === contentType) {
     data = await getJsonFile({ fileName: params.slug })

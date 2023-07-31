@@ -12,16 +12,19 @@ const contentType = 'page'
 
 interface PageProps {
   params: {
-    id: string
+    slug: string
+    contentType: string
   }
 }
 
 type Args = {
-  id: string
+  slug: string
+  contentType: string
 }
 
 async function getDocFromParams(params: Args) {
   let data: ParsedData | undefined
+  // console.log('allDocs: ', allDocs)
   const post = allDocs.find((post) => post.slugAsParams === params.slug)
 
   if (params.contentType === contentType) {
@@ -32,9 +35,9 @@ async function getDocFromParams(params: Args) {
 }
 
 const page = async ({ params }: PageProps) => {
-  // console.log('params: ', params)
+  console.log('params [id]/page.tsx: ', params)
   const currentPageData = getPageContentFromMarkdown().filter(
-    (page: any) => page.id === params.id,
+    (page: any) => page.id === params.slug,
   )[0]
   // console.log('currentPageData: ', currentPageData)
   const { post, data } = await getDocFromParams(params)
@@ -74,11 +77,13 @@ const page = async ({ params }: PageProps) => {
               alt=""
             />
 
+            {/*
             {params.contentType === contentType && data === undefined ? (
-              <div>{`No summary generated for ${params.slug}`}</div>
+              <div>{`No summary generated for ${params.id}`}</div>
             ) : null}
+            */}
 
-            <Mdx code={post.body.code} slug={params.slug} jsonData={data} />
+            <Mdx code={post.body.code} slug={params.slug} page={true} />
           </div>
         </div>
       </article>
