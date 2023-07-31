@@ -1,23 +1,20 @@
 import * as React from 'react'
 
 import { Callout } from '@/components/callout'
-import Image from 'next/image'
+// import Image from 'next/image'
 import { MdxCard } from '@/components/mdx-card'
 import { ParsedData } from '@/lib/get-json'
-import SummaryLink from './SummaryLink'
+// import SummaryLink from './SummaryLink'
 import { cn } from '@/lib/utils'
 import { useMDXComponent } from 'next-contentlayer/hooks'
 
 interface MdxProps {
   code: string
   slug: string
-  jsonData?: ParsedData | undefined
-  page: boolean
+  jsonData: ParsedData | undefined
 }
 
-export function Mdx({ code, slug, jsonData, page = false }: MdxProps) {
-  // console.log('code: ', code)
-  console.log('slug: ', slug)
+export function Mdx({ code, slug, jsonData }: MdxProps) {
   const Component = useMDXComponent(code)
 
   // TODO: Fix the liberal className?: explicit any usage
@@ -35,41 +32,69 @@ export function Mdx({ code, slug, jsonData, page = false }: MdxProps) {
       children?: any
       'data-no-summary'?: string
     }) => {
-      if (noSummary || page) {
-        return (
-          <a
-            className={cn(
-              'font-medium underline underline-offset-4',
-              className,
-            )}
-            href={href}
-            {...props}
-          >
-            {children}
-          </a>
-        )
-      }
       return (
-        <SummaryLink href={href} title={children} slug={slug} data={jsonData} />
+        <a
+          className={cn('font-medium underline underline-offset-4', className)}
+          href={href}
+          {...props}
+        >
+          {children}
+        </a>
       )
     },
     h1: ({ className, ...props }: { className?: any }) => (
-      <h1 className={cn('', className)} {...props} />
+      <h1
+        className={cn(
+          'mt-2 scroll-m-20 text-4xl font-bold tracking-tight',
+          className,
+        )}
+        {...props}
+      />
     ),
     h2: ({ className, ...props }: { className?: any }) => (
-      <h2 className={cn('', className)} {...props} />
+      <h2
+        className={cn(
+          'mt-10 scroll-m-20 border-b pb-1 text-3xl font-semibold tracking-tight first:mt-0',
+          className,
+        )}
+        {...props}
+      />
     ),
     h3: ({ className, ...props }: { className?: any }) => (
-      <h3 className={cn('', className)} {...props} />
+      <h3
+        className={cn(
+          'mt-8 scroll-m-20 text-2xl font-semibold tracking-tight',
+          className,
+        )}
+        {...props}
+      />
     ),
     h4: ({ className, ...props }: { className?: any }) => (
-      <h4 className={cn('', className)} {...props} />
+      <h4
+        className={cn(
+          'mt-8 scroll-m-20 text-xl font-semibold tracking-tight',
+          className,
+        )}
+        {...props}
+      />
     ),
     h5: ({ className, ...props }: { className?: any }) => (
-      <h5 className={cn('', className)} {...props} />
+      <h5
+        className={cn(
+          'mt-8 scroll-m-20 text-lg font-semibold tracking-tight',
+          className,
+        )}
+        {...props}
+      />
     ),
     h6: ({ className, ...props }: { className?: any }) => (
-      <h6 className={cn('', className)} {...props} />
+      <h6
+        className={cn(
+          'mt-8 scroll-m-20 text-base font-semibold tracking-tight',
+          className,
+        )}
+        {...props}
+      />
     ),
     p: ({ className, ...props }: { className?: any }) => (
       <p
@@ -168,6 +193,7 @@ export function Mdx({ code, slug, jsonData, page = false }: MdxProps) {
 
   return (
     <div className="mdx">
+      {slug}
       <Component components={components} />
     </div>
   )

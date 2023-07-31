@@ -6,8 +6,9 @@ import Image from 'next/image'
 import { Mdx } from '@/components/MDX-components'
 import { allDocs } from 'contentlayer/generated'
 import socraticDiscussion from 'public/socratic-discussion-default.jpg'
+import { getPageContentFromMarkdown } from '@/lib/parse-markdown-files'
 
-const contentType = 'events'
+const contentType = 'page'
 
 interface PageProps {
   params: {
@@ -23,9 +24,8 @@ type Args = {
 
 async function getDocFromParams(params: Args) {
   let data: ParsedData | undefined
-  const post = allDocs.find((post) => post.slugAsParams === params.slug)
   // console.log('allDocs: ', allDocs)
-  console.log('params: ', params)
+  const post = allDocs.find((post) => post.slugAsParams === params.slug)
 
   if (params.contentType === contentType) {
     data = await getJsonFile({ fileName: params.slug })
@@ -35,10 +35,15 @@ async function getDocFromParams(params: Args) {
 }
 
 const page = async ({ params }: PageProps) => {
+  console.log('params [id]/page.tsx: ', params)
+  const currentPageData = getPageContentFromMarkdown().filter(
+    (page: any) => page.id === params.slug,
+  )[0]
+  // console.log('currentPageData: ', currentPageData)
   const { post, data } = await getDocFromParams(params)
 
   if (!post) {
-    return <div>404 sorry you poor bitdev</div>
+    return <div>Watermelon 404 sorry you poor bitdev</div>
   }
 
   return (
@@ -64,24 +69,7 @@ const page = async ({ params }: PageProps) => {
         {/* Content */}
         <div className="ml-10 relative z-1 w-full">
           <div className="container mx-auto max-w-5xl px-4 pb-4">
-            <Image
-              src={socraticDiscussion}
-              width="960"
-              height="540"
-              className="w-full h-auto"
-              alt=""
-            />
-
-            {params.contentType === contentType && data === undefined ? (
-              <div>{`No summary generated for ${params.slug}`}</div>
-            ) : null}
-
-            <Mdx
-              code={post.body.code}
-              slug={params.slug}
-              jsonData={data}
-              page={false}
-            />
+            <Mdx code={post.body.code} slug={params.slug} page={true} />
           </div>
         </div>
       </article>

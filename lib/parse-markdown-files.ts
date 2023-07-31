@@ -20,10 +20,10 @@ export enum ContentType {
 }
 
 interface MarkdownData {
-  id: string;
-  title: string;
-  date: string;
-  author?: string;
+  id: string
+  title: string
+  date: string
+  author?: string
 }
 
 export function getSortedMarkdownContent(contentType: ContentType) {
@@ -50,7 +50,7 @@ export function getSortedMarkdownContent(contentType: ContentType) {
       date: '2009-01-03 00:00:00',
       ...matterResult.data,
     }
-    
+
     return markdownData
   })
   // Sort posts by date
@@ -64,5 +64,45 @@ export function getSortedMarkdownContent(contentType: ContentType) {
       }
     })
 
+  return returnValue
+}
+
+interface PageData {
+  id: string
+  title: string
+}
+export function getPageContentFromMarkdown() {
+  const contentDirectory = path.join(process.cwd(), '/content/pages')
+  // Get the file names under /pages
+  const fileNames = fs.readdirSync(contentDirectory)
+
+  const allPagesData = fileNames.map((fileName) => {
+    const id = fileName.replace(/\.md$/, '')
+
+    // Read markdown file as string
+    const fullPath = path.join(contentDirectory, fileName)
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+
+    // Use gray-matter to parse the page metadata section
+    const matterResult = matter(fileContents)
+
+    // Combine the data with the id
+    const pageData: PageData = {
+      id,
+      title: 'Example Page Title',
+      ...matterResult.data,
+    }
+
+    return pageData
+  })
+  const returnValue = allPagesData
+    .filter((data) => data.id !== '.gitkeep')
+    .sort((a, b) => {
+      if (a.id < b.id) {
+        return 1
+      } else {
+        return -1
+      }
+    })
   return returnValue
 }
