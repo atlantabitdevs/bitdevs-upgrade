@@ -69,20 +69,6 @@ const page = async ({ params }: PageProps) => {
         {/* Content */}
         <div className="ml-10 relative z-1 w-full">
           <div className="container mx-auto max-w-5xl px-4 pb-4">
-            <Image
-              src={socraticDiscussion}
-              width="960"
-              height="540"
-              className="w-full h-auto"
-              alt=""
-            />
-
-            {/*
-            {params.contentType === contentType && data === undefined ? (
-              <div>{`No summary generated for ${params.id}`}</div>
-            ) : null}
-            */}
-
             <Mdx code={post.body.code} slug={params.slug} page={true} />
           </div>
         </div>

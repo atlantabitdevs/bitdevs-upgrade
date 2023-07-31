@@ -76,7 +76,12 @@ const page = async ({ params }: PageProps) => {
               <div>{`No summary generated for ${params.slug}`}</div>
             ) : null}
 
-            <Mdx code={post.body.code} slug={params.slug} jsonData={data} />
+            <Mdx
+              code={post.body.code}
+              slug={params.slug}
+              jsonData={data}
+              page={false}
+            />
           </div>
         </div>
       </article>
