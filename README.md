@@ -4,9 +4,28 @@
 
 This is a project to improve the UX of BitDevs websites and add AI generated summaries to help new attendees.
 
-## AI Scraper
+## AI Scraper and Summarizer
 
-Work by Nitesh on the AI scraper portion: https://github.com/niteshbalusu11/bitdevs-ai-scraper/tree/main
+[How to setup repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
+
+- Add repository secret `OPENAI_API_KEY` -> your Open AI API Key
+- Add repository secret `GH_TOKEN` -> A github access token with enough access to commit files and submit a PR
+- These secrets will enable the github action to summarize the event markdown files using OpenAI.
+- The `ai` directory is independent from the website and runs and builds separately. If you want to run it locally:
+
+```
+cd ai
+
+# Make a .env file inside the ai directory and add your OPENAI_API_KEY
+
+yarn install
+
+yarn start
+```
+
+- It will pick markdown files inside `content/events` directory starting with a date in `yyyy-mm-dd`.
+- Only the most recent file sorted by date will be summarized.
+- Once the Github action finishes the building the summary, it will submit a PR to the repo. If the PR is merged, the repo builds and deploys to production and summaries are visible on the website.
 
 ## Figma Design
 
@@ -15,7 +34,6 @@ Follow design work here: https://www.figma.com/file/4bV8cJBpreCpWwJ55uk9Rb/BitDe
 ## Frontend Template
 
 The frontend is a NextJS website. See below for NextJS details.
-
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
