@@ -47,7 +47,7 @@ export default function PostPreview(props: PostPreviewProps) {
         )}
       </header>
 
-      <p>{stripped}</p>
+      <p>{stripped}&hellip;</p>
     </article>
   )
 }
