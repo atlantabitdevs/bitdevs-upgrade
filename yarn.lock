@@ -913,7 +913,7 @@
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.3.tgz"
   integrity sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==
 
-"@types/unist@^2", "@types/unist@^2.0.0":
+"@types/unist@^2", "@types/unist@^2.0.0", "@types/unist@^2.0.6":
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.7.tgz#5b06ad6894b236a1d2bd6b2f07850ca5c59cf4d6"
   integrity sha512-cputDpIbFgLUaGQn6Vqg3/YsJwxUwHLO13v3i5ouxT4lat0khip9AEWxtERujXV9wxIB1EyF97BSJFt6vpdI8g==
@@ -3135,6 +3135,16 @@ markdown-table@^3.0.0:
   resolved "https://registry.yarnpkg.com/markdown-table/-/markdown-table-3.0.3.tgz#e6331d30e493127e031dd385488b5bd326e4a6bd"
   integrity sha512-Z1NL3Tb1M9wH4XESsCDEksWoKTdlUafKc4pt0GRwjUyXaCFZ+dc3g2erqB6zm3szA2IUSi7VnPI+o/9jnxh9hw==
 
+marked-mangle@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/marked-mangle/-/marked-mangle-1.1.0.tgz#f9f0adfbb841079d7342368bc5c7592ba93e3527"
+  integrity sha512-ed2W2gMB2HIBaYasBZveMFJfDRTL2OFycr0GgUSPcBSNl5dX+1r6lHG6u1eFXw7kej2hBTWa1m6YZqcfn4Coxw==
+
+marked@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/marked/-/marked-6.0.0.tgz#80cd7f51145437cffe9f541a318b9882f75601df"
+  integrity sha512-7E3m/xIlymrFL5gWswIT4CheIE3fDeh51NV09M4x8iOc7NDYlyERcQMLAIHcSlrvwliwbPQ4OGD+MpPSYiQcqw==
+
 md5@^2.3.0:
   version "2.3.0"
   resolved "https://registry.npmjs.org/md5/-/md5-2.3.0.tgz"
@@ -4816,6 +4826,15 @@ strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
   version "3.1.1"
   resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-3.1.1.tgz"
   integrity sha512-6fPc+R4ihwqP6N/aIv2f1gMH8lOVtWQHoqC4yK6oSDVVocumAsfCqjkXnqiYMhmMwS/mEHLp7Vehlt3ql6lEig==
+
+strip-markdown@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.yarnpkg.com/strip-markdown/-/strip-markdown-5.0.1.tgz#01e9689f292652ae0a383ac362779f721031bc48"
+  integrity sha512-IvoKZrXtWAnlEjRfDlT3yRtGRvpX3RSg+nwAHONmshpSCoxgjZV2xX9ZYvEmwupmYobJtws9oDdTwLUu/5PoMQ==
+  dependencies:
+    "@types/mdast" "^3.0.0"
+    "@types/unist" "^2.0.6"
+    unified "^10.0.0"
 
 style-to-object@^0.4.1:
   version "0.4.1"

@@ -1,6 +1,7 @@
 import fs from 'fs'
 import matter from 'gray-matter'
 import path from 'path'
+import { marked } from 'marked'
 
 /*
  * This function gets a list of the posts/events from the markdown files.
@@ -24,6 +25,7 @@ interface MarkdownData {
   title: string
   date: string
   author?: string
+  preview: string
 }
 
 export function getSortedMarkdownContent(contentType: ContentType) {
@@ -48,6 +50,7 @@ export function getSortedMarkdownContent(contentType: ContentType) {
       id,
       title: 'Example Title',
       date: '2009-01-03 00:00:00',
+      preview: matterResult.content.replace(/<[^>]*>/g, '').slice(0, 200),
       ...matterResult.data,
     }
 
