@@ -40,7 +40,7 @@ const page = async ({ params }: PageProps) => {
   }
 
   return (
-    <main className="w-full">
+    <main className="w-full dark:text-white">
       <article className="flex flex-row w-full">
         {/* Nav */}
         <div className="w-1/3 min-w-[300px] max-w-[480px] h-screen p-8 drop-shadow-sidebar sticky top-[82px] left-0 z-[49] bg-white overflow-y-auto flex flex-col gap-4">
