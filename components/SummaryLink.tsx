@@ -13,25 +13,16 @@ export default function SummaryLink(props: Props) {
 
   return (
     <div className="bg-dark p-4 space-y-4">
-      {' '}
-      {/* Added dark background, white text, padding, and vertical spacing */}
       {!!props.data
         ? props.data.summary.map((n) => (
             <div key={n.title} className="space-y-2">
-              {' '}
-              {/* Added vertical spacing and unique key */}
-              <h1 className="text-3xl font-bold">{n.title}</h1>{' '}
-              {/* Added text size and bold font */}
+              <span className="text-xl font-sans font-semibold">{n.title}</span>
               <div className="pl-2">
-                {' '}
-                {/* Added padding to the left */}
-                <p className="text-lg">{n.summary}</p> {/* Added text size */}
+                <p className="text-lg">{n.summary}</p>
               </div>
               <div className="pl-2">
                 {' '}
-                {/* Added padding to the left */}
-                <p className="text-sm">{n.summaryeli15}</p>{' '}
-                {/* Added text size */}
+                <p className="text-sm">{n.summaryeli15}</p>
               </div>
             </div>
           ))
