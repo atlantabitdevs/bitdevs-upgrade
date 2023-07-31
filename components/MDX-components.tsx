@@ -15,7 +15,9 @@ interface MdxProps {
   page: boolean
 }
 
-export function Mdx({ code, slug, jsonData, page=false }: MdxProps) {
+export function Mdx({ code, slug, jsonData, page = false }: MdxProps) {
+  // console.log('code: ', code)
+  console.log('slug: ', slug)
   const Component = useMDXComponent(code)
 
   // TODO: Fix the liberal className?: explicit any usage
@@ -38,7 +40,7 @@ export function Mdx({ code, slug, jsonData, page=false }: MdxProps) {
           <a
             className={cn(
               'font-medium underline underline-offset-4',
-              className
+              className,
             )}
             href={href}
             {...props}
@@ -52,58 +54,22 @@ export function Mdx({ code, slug, jsonData, page=false }: MdxProps) {
       )
     },
     h1: ({ className, ...props }: { className?: any }) => (
-      <h1
-        className={cn(
-          '',
-          className
-        )}
-        {...props}
-      />
+      <h1 className={cn('', className)} {...props} />
     ),
     h2: ({ className, ...props }: { className?: any }) => (
-      <h2
-        className={cn(
-          '',
-          className
-        )}
-        {...props}
-      />
+      <h2 className={cn('', className)} {...props} />
     ),
     h3: ({ className, ...props }: { className?: any }) => (
-      <h3
-        className={cn(
-          '',
-          className
-        )}
-        {...props}
-      />
+      <h3 className={cn('', className)} {...props} />
     ),
     h4: ({ className, ...props }: { className?: any }) => (
-      <h4
-        className={cn(
-          '',
-          className
-        )}
-        {...props}
-      />
+      <h4 className={cn('', className)} {...props} />
     ),
     h5: ({ className, ...props }: { className?: any }) => (
-      <h5
-        className={cn(
-          '',
-          className
-        )}
-        {...props}
-      />
+      <h5 className={cn('', className)} {...props} />
     ),
     h6: ({ className, ...props }: { className?: any }) => (
-      <h6
-        className={cn(
-          '',
-          className
-        )}
-        {...props}
-      />
+      <h6 className={cn('', className)} {...props} />
     ),
     p: ({ className, ...props }: { className?: any }) => (
       <p
@@ -124,7 +90,7 @@ export function Mdx({ code, slug, jsonData, page=false }: MdxProps) {
       <blockquote
         className={cn(
           'mt-6 border-l-2 pl-6 italic [&>*]:text-muted-foreground',
-          className
+          className,
         )}
         {...props}
       />
@@ -163,7 +129,7 @@ export function Mdx({ code, slug, jsonData, page=false }: MdxProps) {
       <th
         className={cn(
           'border px-4 py-2 text-left font-bold [&[align=center]]:text-center [&[align=right]]:text-right',
-          className
+          className,
         )}
         {...props}
       />
@@ -172,7 +138,7 @@ export function Mdx({ code, slug, jsonData, page=false }: MdxProps) {
       <td
         className={cn(
           'border px-4 py-2 text-left [&[align=center]]:text-center [&[align=right]]:text-right',
-          className
+          className,
         )}
         {...props}
       />
@@ -181,7 +147,7 @@ export function Mdx({ code, slug, jsonData, page=false }: MdxProps) {
       <pre
         className={cn(
           'mb-4 mt-6 overflow-x-auto rounded-lg border bg-black py-4',
-          className
+          className,
         )}
         {...props}
       />
@@ -190,7 +156,7 @@ export function Mdx({ code, slug, jsonData, page=false }: MdxProps) {
       <code
         className={cn(
           'relative rounded border px-[0.3rem] py-[0.2rem] font-mono text-sm',
-          className
+          className,
         )}
         {...props}
       />

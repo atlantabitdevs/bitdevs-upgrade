@@ -82,11 +82,9 @@ export function getPageContentFromMarkdown() {
     // Read markdown file as string
     const fullPath = path.join(contentDirectory, fileName)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
-    console.log('fileContents: ', fileContents)
 
     // Use gray-matter to parse the page metadata section
     const matterResult = matter(fileContents)
-    console.log('matterResult: ', matterResult)
 
     // Combine the data with the id
     const pageData: PageData = {

@@ -1,14 +1,23 @@
 import getJsonFile, { ParsedData } from '@/lib/get-json'
-import { getPageContentFromMarkdown } from '@/lib/parse-markdown-files'
+
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
+import { FC } from 'react'
+import Image from 'next/image'
 import { Mdx } from '@/components/MDX-components'
 import { allDocs } from 'contentlayer/generated'
-import Link from 'next/link'
+import socraticDiscussion from 'public/socratic-discussion-default.jpg'
+import { getPageContentFromMarkdown } from '@/lib/parse-markdown-files'
 
 const contentType = 'page'
 
+interface PageProps {
+  params: {
+    id: string
+  }
+}
+
 type Args = {
-  slug: string
-  contentType: string
+  id: string
 }
 
 async function getDocFromParams(params: Args) {
@@ -22,40 +31,59 @@ async function getDocFromParams(params: Args) {
   return { post, data }
 }
 
-export default async function Posts({ params }: { params: any }) {
-  const { post, data } = await getDocFromParams(params)
+const page = async ({ params }: PageProps) => {
+  // console.log('params: ', params)
   const currentPageData = getPageContentFromMarkdown().filter(
-    (page) => page.id === params.id,
+    (page: any) => page.id === params.id,
   )[0]
-  console.log('params: ', params)
-  console.log('currentPageData: ', currentPageData)
+  // console.log('currentPageData: ', currentPageData)
+  const { post, data } = await getDocFromParams(params)
+
+  if (!post) {
+    return <div>Watermelon 404 sorry you poor bitdev</div>
+  }
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <h1>This is the {} page, bruh</h1>
-      <Link href="/" style={{ textDecoration: 'underline' }}>
-        Home
-      </Link>
+    <main className="w-full">
+      <article className="flex flex-row w-full">
+        {/* Nav */}
+        <div className="w-1/3 min-w-[300px] max-w-[480px] h-screen p-8 drop-shadow-sidebar sticky top-[82px] left-0 z-50 bg-white overflow-y-auto flex flex-col gap-4">
+          <header className="font-sans flex flex-col gap-2">
+            <h1 className="text-4xl font-black">{post.title}</h1>
+            <time className="text-2xl text-gray-500">{post.date}</time>
+            <p className="text-xl flex flex-row gap-2 items-center">
+              <a href={''}>Meetup Link</a>
+              <ArrowTopRightOnSquareIcon className="w-6 h-6" />
+            </p>
+          </header>
+          <nav>
+            <ul className="list-disc font-sans">
+              <li>Content Outline</li>
+            </ul>
+          </nav>
+        </div>
 
-      {/*
-      <ul>
-        {allContentData.map(({ id, date, title }) => (
-          <li className="post" key={id}>
-            <Link href={`/${contentType}/${id}`}>{title}</Link>
-            <br />
-            {id}
-            <br />
-            {date}
-          </li>
-        ))}
-      </ul>
-      */}
-      <Mdx
-        code={post.body.code}
-        slug={params.slug}
-        jsonData={data}
-        page={true}
-      />
+        {/* Content */}
+        <div className="ml-10 relative z-1 w-full">
+          <div className="container mx-auto max-w-5xl px-4 pb-4">
+            <Image
+              src={socraticDiscussion}
+              width="960"
+              height="540"
+              className="w-full h-auto"
+              alt=""
+            />
+
+            {params.contentType === contentType && data === undefined ? (
+              <div>{`No summary generated for ${params.slug}`}</div>
+            ) : null}
+
+            <Mdx code={post.body.code} slug={params.slug} jsonData={data} />
+          </div>
+        </div>
+      </article>
     </main>
   )
 }
+
+export default page
