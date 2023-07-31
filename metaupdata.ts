@@ -28,7 +28,7 @@ export const metaupdata: Metaupdata = {
     },
     {
       text: 'About',
-      link: '/about'
+      link: '/page/about'
     },
     {
       text: 'Meetup',

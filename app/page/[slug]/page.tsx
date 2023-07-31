@@ -49,29 +49,10 @@ const page = async ({ params }: PageProps) => {
   return (
     <main className="w-full">
       <article className="flex flex-row w-full">
-        {/* Nav */}
-        <div className="w-1/3 min-w-[300px] max-w-[480px] h-screen p-8 drop-shadow-sidebar sticky top-[82px] left-0 z-50 bg-white overflow-y-auto flex flex-col gap-4">
-          <header className="font-sans flex flex-col gap-2">
+          <div className="container mx-auto max-w-5xl p-4 flex flex-col gap-4">
             <h1 className="text-4xl font-black">{post.title}</h1>
-            <time className="text-2xl text-gray-500">{post.date}</time>
-            <p className="text-xl flex flex-row gap-2 items-center">
-              <a href={''}>Meetup Link</a>
-              <ArrowTopRightOnSquareIcon className="w-6 h-6" />
-            </p>
-          </header>
-          <nav>
-            <ul className="list-disc font-sans">
-              <li>Content Outline</li>
-            </ul>
-          </nav>
-        </div>
-
-        {/* Content */}
-        <div className="ml-10 relative z-1 w-full">
-          <div className="container mx-auto max-w-5xl px-4 pb-4">
             <Mdx code={post.body.code} slug={params.slug} page={true} />
           </div>
-        </div>
       </article>
     </main>
   )
