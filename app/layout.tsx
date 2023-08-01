@@ -34,6 +34,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <meta property="og:image" content={metaupdata.image} />
+        <meta property="og:image:type" content="image/jpg" />
+        <meta property="og:image:width" content="1920" />
+        <meta property="og:image:height" content="1080" />
+        <meta property="og:image:alt" content="" />
+      </head>
       <body
         className={`${
           inter.className + ' ' + ibmPlexSerif.className
