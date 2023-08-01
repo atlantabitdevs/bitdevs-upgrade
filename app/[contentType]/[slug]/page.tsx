@@ -47,28 +47,47 @@ const page = async ({ params }: PageProps) => {
           <header className="font-sans flex flex-col gap-2">
             <h1 className="text-4xl font-black">{post.title}</h1>
             <time className="text-2xl text-gray-500">{post.date}</time>
-            <p className="text-xl flex flex-row gap-2 items-center">
-              <a href={''}>Meetup Link</a>
-              <ArrowTopRightOnSquareIcon className="w-6 h-6" />
-            </p>
+            {params.contentType === 'posts' ? (
+              <p className="text-xl flex flex-row gap-2 items-center">
+                {post.author}
+              </p>
+            ) : (
+              ``
+            )}
+            {params.contentType === 'events' ? (
+              <p className="text-xl flex flex-row gap-2 items-center">
+                <a href={''}>Meetup Link</a>
+                <ArrowTopRightOnSquareIcon className="w-6 h-6" />
+              </p>
+            ) : (
+              ``
+            )}
           </header>
-          <nav>
-            <ul className="list-disc font-sans">
-              <li>Content Outline</li>
-            </ul>
-          </nav>
+          {params.contentType === 'events' ? (
+            <nav>
+              <ul className="list-disc font-sans">
+                <li>Content Outline</li>
+              </ul>
+            </nav>
+          ) : (
+            ``
+          )}
         </div>
 
         {/* Content */}
         <div className="ml-10 relative z-1 w-full">
           <div className="container mx-auto max-w-5xl px-4 pb-4">
-            <Image
-              src={socraticDiscussion}
-              width="960"
-              height="540"
-              className="w-full h-auto"
-              alt=""
-            />
+            {post.image ? (
+              <Image
+                src={'/' + post.image}
+                width="960"
+                height="540"
+                className="w-full h-auto mb-8"
+                alt=""
+              />
+            ) : (
+              ``
+            )}
 
             {params.contentType === contentType && data === undefined ? (
               <div>{`No summary generated for ${params.slug}`}</div>

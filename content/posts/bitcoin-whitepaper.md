@@ -2,6 +2,7 @@
 title: 'The Bitcoin Whitepaper'
 date: '2023-07-23'
 author: 'BitDevs Organizers'
+image: 'new-bitdevs-default-alt-2.jpg'
 ---
 
 The Bitcoin Whitepaper is recommended reading if you want to understand how the bitcoin protocol works. This paper outlines the fundamental principles of how Bitcoin works.

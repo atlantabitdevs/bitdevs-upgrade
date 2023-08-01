@@ -2,6 +2,7 @@
 title: 'A Poem About Bitcoin'
 date: '2023-07-24'
 author: 'Mel BitcoinStein'
+image: 'new-bitdevs-default-alt-1.jpg'
 ---
 
 In a world where shopping is a click away,  

@@ -29,6 +29,12 @@ export const Doc = defineDocumentType(() => ({
     date: {
       type: 'string',
     },
+    author: {
+      type: 'string',
+    },
+    image: {
+      type: 'string',
+    },
     published: {
       type: 'boolean',
       default: true,
