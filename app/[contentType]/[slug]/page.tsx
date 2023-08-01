@@ -65,9 +65,9 @@ const page = async ({ params }: PageProps) => {
           </header>
           {params.contentType === 'events' ? (
             <nav>
-              <ul className="list-disc font-sans">
+              {/* <ul className="list-disc font-sans">
                 <li>Content Outline</li>
-              </ul>
+              </ul> */}
             </nav>
           ) : (
             ``
