@@ -15,7 +15,7 @@ export default function SummaryLink(props: Props) {
   const entry = props.data?.summary.find((item) => item.title == props.title)
 
   return (
-    <span className="pt-4 pb-8 block">
+    <span className="pt-4 mb-10 block">
       {!!props.data ? (
         <span key={props.title} className="flex flex-col gap-2">
           <span className="text-xl font-sans font-semibold">{props.title}</span>
