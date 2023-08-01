@@ -37,7 +37,7 @@ export default function RootLayout({
       <body
         className={`${
           inter.className + ' ' + ibmPlexSerif.className
-        } bg-white dark:gray-900 ${switchThemeDuration}`}
+        } ${switchThemeDuration}`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Header />

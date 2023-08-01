@@ -15,7 +15,9 @@ module.exports = {
       },
       dropShadow: {
         header: '0 4px 24px rgba(0, 0, 0, 0.04)',
+        'header-dark': '0 4px 24px rgba(0, 0, 0, 0.15)',
         sidebar: '4px 0 24px rgba(0, 0, 0, 0.04)',
+        'sidebar-dark': '4px 0 24px rgba(0, 0, 0, 0.15)',
       },
     },
     fontFamily: {

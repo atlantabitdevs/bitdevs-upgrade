@@ -5,7 +5,7 @@ import { metaupdata } from '@/metaupdata'
 
 const Header = () => {
   return (
-    <header className="header w-full p-6 flex flex-row justify-between font-sans sticky top-0 left-0 bg-white z-50 drop-shadow-header dark:bg-neutral-900 dark:text-white">
+    <header className="header w-full p-6 flex flex-row justify-between font-sans sticky top-0 left-0 bg-white z-50 drop-shadow-header dark:drop-shadow-header-dark dark:bg-neutral-900">
       <h1 className="font-black text-2xl">
         <a href="/" className="no-underline">
           <MeetupName />
