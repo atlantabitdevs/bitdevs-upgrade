@@ -86,7 +86,7 @@ const page = async ({ params }: PageProps) => {
                 alt=""
               />
             ) : (
-              ``
+              <div className="w-full h-8"></div>
             )}
 
             {params.contentType === contentType && data === undefined ? (
