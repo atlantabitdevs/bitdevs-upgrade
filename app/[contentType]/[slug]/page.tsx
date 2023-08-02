@@ -56,8 +56,14 @@ const page = async ({ params }: PageProps) => {
             )}
             {params.contentType === 'events' ? (
               <p className="text-xl flex flex-row gap-2 items-center">
-                <a href={''}>Meetup Link</a>
-                <ArrowTopRightOnSquareIcon className="w-6 h-6" />
+                {post.meetupLink ? (
+                  <>
+                    <a href={post.meetupLink}>Meetup Link</a>
+                    <ArrowTopRightOnSquareIcon className="w-6 h-6" />
+                  </>
+                ) : (
+                  ``
+                )}
               </p>
             ) : (
               ``
