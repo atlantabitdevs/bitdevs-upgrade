@@ -7,7 +7,8 @@
     "build": "contentlayer build && next build",
     "start": "next start",
     "lint": "next lint",
-    "summarize": "node --loader ts-node/esm ./scripts/summarize-md.ts"
+    "summarize": "cp meetup.ts ai/src/meetup.ts && cp types/Meetup.ts ai/src/types/Meetup.ts && cd ai && yarn start",
+    "summarizeold": "node --loader ts-node/esm ./scripts/summarize-md.ts"
   },
   "dependencies": {
     "@bitcoin-design/bitcoin-icons-react": "^0.1.9",
