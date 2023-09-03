@@ -9,7 +9,7 @@
     "lint": "next lint",
     "summarize": "cp meetup.ts ai/src/meetup.ts && cp types/Meetup.ts ai/src/types/Meetup.ts && cd ai && yarn start",
     "summarizeold": "node --loader ts-node/esm ./scripts/summarize-md.ts",
-    "upgrade": "git clone https://github.com/atlantabitdevs/bitdevs-upgrade.git ./tmp-template && ncp --filter '^((?!content|public|summaries).)*$' ./tmp-template/ . && rimraf ./tmp-template"
+    "update": "git clone https://github.com/atlantabitdevs/bitdevs-upgrade.git ./tmp-template && ncp --filter '^((?!content|public|summaries).)*$' ./tmp-template/ . && rimraf ./tmp-template"
   },
   "dependencies": {
     "@bitcoin-design/bitcoin-icons-react": "^0.1.9",
