@@ -1,4 +1,4 @@
-name: Process New Event
+name: Generate AI Summaries
 
 on:
   push:
