@@ -38,5 +38,7 @@ next-env.d.ts
 ai/build
 ai/node_modules
 .env
+types/*.ts
+types/*.js
 
 .contentlayer

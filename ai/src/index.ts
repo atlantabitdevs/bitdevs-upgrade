@@ -6,7 +6,7 @@ import { auto, mapLimit } from 'async'
 
 import getScrapedData from './get_scraped_data'
 import writeSummary from './write_summary'
-import { metaupdata } from '../../metaupdata'
+import { metaupdata } from './metaupdata'
 
 dotenv.config()
 

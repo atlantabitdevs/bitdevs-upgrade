@@ -7,7 +7,7 @@
     "build": "contentlayer build && next build",
     "start": "next start",
     "lint": "next lint",
-    "summarize": "cp metaupdata.ts ai/src/metaupdata.ts && cd ai && yarn start",
+    "summarize": "cp metaupdata.ts ai/src/metaupdata.ts && cp types/Metaupdata.ts ai/src/types/Metaupdata.ts && cd ai && yarn start",
     "summarizeold": "node --loader ts-node/esm ./scripts/summarize-md.ts"
   },
   "dependencies": {
