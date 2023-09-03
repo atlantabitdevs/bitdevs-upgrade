@@ -9,7 +9,7 @@
     "lint": "next lint",
     "summarize": "cp meetup.ts ai/src/meetup.ts && cp types/Meetup.ts ai/src/types/Meetup.ts && cd ai && yarn start",
     "summarizeold": "node --loader ts-node/esm ./scripts/summarize-md.ts",
-    "update": "git clone https://github.com/atlantabitdevs/bitdevs-upgrade.git ./tmp-template && ncp ./tmp-template/ . --filter '^((?!content|public|summaries|^\\.git$|\\.git/).)*$' && rimraf ./tmp-template",
+    "update": "git clone https://github.com/atlantabitdevs/bitdevs-upgrade.git ./tmp-template && node upgrade.js",
     "update:clean": "rimraf ./tmp-template"
   },
   "dependencies": {
@@ -32,6 +32,7 @@
     "next": "13.4.9",
     "next-contentlayer": "^0.3.4",
     "next-themes": "^0.2.1",
+    "path": "^0.12.7",
     "postcss": "8.4.25",
     "react": "18.2.0",
     "react-dom": "18.2.0",
