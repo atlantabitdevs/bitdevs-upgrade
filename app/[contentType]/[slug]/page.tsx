@@ -1,11 +1,9 @@
 import getJsonFile, { ParsedData } from '@/lib/get-json'
-
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline'
 import { FC } from 'react'
 import Image from 'next/image'
 import { Mdx } from '@/components/MDX-components'
 import { allDocs } from 'contentlayer/generated'
-import socraticDiscussion from 'public/socratic-discussion-default.jpg'
 
 const contentType = 'events'
 
