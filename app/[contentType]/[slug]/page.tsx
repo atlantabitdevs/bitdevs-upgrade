@@ -33,6 +33,9 @@ async function getDocFromParams(params: Args) {
 const page = async ({ params }: PageProps) => {
   const { post, data } = await getDocFromParams(params)
 
+  if (params.contentType === contentType && data === undefined)
+    console.log(`No summary generated for ${params.slug}`)
+
   if (!post) {
     return <div>404 sorry you poor bitdev</div>
   }
@@ -92,10 +95,6 @@ const page = async ({ params }: PageProps) => {
             ) : (
               <div className="w-full h-8"></div>
             )}
-
-            {params.contentType === contentType && data === undefined ? (
-              <div>{`No summary generated for ${params.slug}`}</div>
-            ) : null}
 
             <Mdx
               code={post.body.code}
