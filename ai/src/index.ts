@@ -6,7 +6,7 @@ import { auto, mapLimit } from 'async'
 
 import getScrapedData from './get_scraped_data'
 import writeSummary from './write_summary'
-import { metaupdata } from './metaupdata'
+import { meetup } from './meetup'
 
 dotenv.config()
 
@@ -57,11 +57,11 @@ const main = async () => {
                   messages: [
                     {
                       role: 'system',
-                      content: metaupdata.ai[0].system,
+                      content: meetup.ai[0].system,
                     },
                     {
                       role: 'user',
-                      content: `${metaupdata.ai[0].promptTemplate} ${summary.text}`,
+                      content: `${meetup.ai[0].promptTemplate} ${summary.text}`,
                     },
                   ],
                 }),
@@ -70,11 +70,11 @@ const main = async () => {
                   messages: [
                     {
                       role: 'system',
-                      content: metaupdata.ai[1].system,
+                      content: meetup.ai[1].system,
                     },
                     {
                       role: 'user',
-                      content: `${metaupdata.ai[1].promptTemplate} ${summary.text}`,
+                      content: `${meetup.ai[1].promptTemplate} ${summary.text}`,
                     },
                   ],
                 }),

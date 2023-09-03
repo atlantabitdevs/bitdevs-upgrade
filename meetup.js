@@ -1,6 +1,7 @@
-import { Metaupdata } from './types/Metaupdata'
-
-export const metaupdata: Metaupdata = {
+'use strict'
+Object.defineProperty(exports, '__esModule', { value: true })
+exports.meetup = void 0
+exports.meetup = {
   city: {
     name: 'New',
     position: 'left',

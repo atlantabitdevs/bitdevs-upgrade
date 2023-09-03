@@ -1,4 +1,4 @@
-export interface Metaupdata {
+export interface Meetup {
   description: string
   city: {
     name: string

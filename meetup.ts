@@ -1,6 +1,6 @@
-import { Metaupdata } from './types/Metaupdata'
+import { Meetup } from './types/Meetup'
 
-export const metaupdata: Metaupdata = {
+export const meetup: Meetup = {
   city: {
     name: 'New',
     position: 'left',
@@ -42,13 +42,14 @@ export const metaupdata: Metaupdata = {
       system:
         'You create useful summaries of long, technical articles in a "cliff notes" format.',
       promptTemplate:
-        'Summarize the following using no more than 160 words, splitting into paragraphs where appropriate:',
+        'Summarize the following in a cliff notes format using no more than 160 words, splitting into paragraphs where appropriate:',
     },
     {
       name: 'Explain Like I&rsquo;m Five',
       system:
         'You summarize articles in an "explain like I&rsquo;m five" format. Assume that the user may not be familiar with the technical jargon in the original text.',
-      promptTemplate: 'Summarize the following using a maximum of 60 words:',
+      promptTemplate:
+        'Summarize the following in an ELI5 format using a maximum of 60 words:',
     },
   ],
 }
