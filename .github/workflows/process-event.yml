@@ -6,6 +6,7 @@ on:
       - main
     paths:
       - 'content/events/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]*.md'
+  workflow_dispatch:
 
 jobs:
   build:
