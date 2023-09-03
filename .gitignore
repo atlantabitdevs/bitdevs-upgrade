@@ -43,3 +43,4 @@ ai/src/types/*.js
 ai/src/meetup.ts
 
 .contentlayer
+tmp-template/
