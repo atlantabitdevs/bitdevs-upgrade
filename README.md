@@ -6,7 +6,7 @@
 
 This is a project to improve the UX of BitDevs websites and add AI generated summaries to help new attendees.
 
-![BitDevs Upgrade](public/bitdevs-upgrade.jpg)
+![BitDevs Upgrade](https://github.com/atlantabitdevs/bitdevs-upgrade/raw/main/public/bitdevs-upgrade.jpg)
 
 ## AI Scraper and Summarizer
 
