@@ -6,7 +6,7 @@ import { auto, mapLimit } from 'async'
 
 import getScrapedData from './get_scraped_data'
 import writeSummary from './write_summary'
-import { meetup } from './meetup'
+import { aiprompt } from './aiprompt'
 
 dotenv.config()
 
@@ -57,11 +57,11 @@ const main = async () => {
                   messages: [
                     {
                       role: 'system',
-                      content: meetup.ai[0].system,
+                      content: aiprompt.summarized.system,
                     },
                     {
                       role: 'user',
-                      content: `${meetup.ai[0].promptTemplate} ${summary.text}`,
+                      content: `${aiprompt.summarized.promptTemplate} ${summary.text}`,
                     },
                   ],
                 }),
@@ -70,11 +70,11 @@ const main = async () => {
                   messages: [
                     {
                       role: 'system',
-                      content: meetup.ai[1].system,
+                      content: aiprompt.eli5.system,
                     },
                     {
                       role: 'user',
-                      content: `${meetup.ai[1].promptTemplate} ${summary.text}`,
+                      content: `${aiprompt.eli5.promptTemplate} ${summary.text}`,
                     },
                   ],
                 }),
