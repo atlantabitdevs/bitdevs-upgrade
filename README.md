@@ -10,6 +10,8 @@ This is a project to improve the UX of BitDevs websites and add AI generated sum
 
 ## AI Scraper and Summarizer
 
+The intended usage is that you use the AI scraper and sumamrizer as a GitHub action, which will be triggered anytime changes are pushed to the `main` or `master` branch.
+
 [How to setup repository secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets)
 
 - Add repository secret `OPENAI_API_KEY` -> your Open AI API Key
@@ -23,9 +25,9 @@ cd ai
 # Make a .env file inside the ai directory and add your OPENAI_API_KEY
 
 yarn install
-
-yarn start
 ```
+
+From there, your `/ai` directory has been configured. You should be able to return to the root website directory and then run `yarn summarize` to invoke the summarizer.
 
 - It will pick markdown files inside `content/events` directory starting with a date in `yyyy-mm-dd`.
 - Only the most recent file sorted by date will be summarized.
